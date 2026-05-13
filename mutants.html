@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutants · AcdS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"></header>
+
+<div class="entry-banner">
+  <div class="inner">
+    <h1>Mutants &amp; engineering</h1>
+    <span class="accession">All numbering = UW4 (Q5PWZ8)</span>
+    <div class="badges">
+      <span class="badge length">20+ characterised mutants</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidenav">
+    <h4>On this page</h4>
+    <a href="#summary">Summary map</a>
+    <a href="#table">Mutant table</a>
+    <a href="#interconv">D-CDes interconversion</a>
+    <a href="#takeaways">Take-aways</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="block" id="summary">
+      <h2>Summary map</h2>
+      <div class="body">
+        <p>Mutations cluster in five functional positions of the active site. UW4 residue numbering throughout; <em>H. saturnus</em> yeast equivalents in italics.</p>
+        <div class="stat-grid">
+          <div class="stat" style="border-left-color: var(--feat-modres);"><div class="v">K51</div><div class="l">PLP Schiff base</div></div>
+          <div class="stat" style="border-left-color: var(--feat-active);"><div class="v">Y294</div><div class="l">catalytic nucleophile</div></div>
+          <div class="stat" style="border-left-color: var(--feat-active);"><div class="v">Y268</div><div class="l">charge relay</div></div>
+          <div class="stat" style="border-left-color: var(--feat-active);"><div class="v">S78</div><div class="l">carboxylate H-bond</div></div>
+          <div class="stat" style="border-left-color: var(--feat-active);"><div class="v">E295</div><div class="l">PLP N1 partner / specificity</div></div>
+          <div class="stat" style="border-left-color: var(--feat-binding);"><div class="v">G44</div><div class="l">substrate gate</div></div>
+          <div class="stat" style="border-left-color: var(--feat-binding);"><div class="v">L322</div><div class="l">PLP packing / specificity</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="table">
+      <h2>Characterised mutants</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Mutant</th>
+              <th>Organism</th>
+              <th>k<sub>cat</sub> (vs WT)</th>
+              <th>K<sub>m</sub></th>
+              <th>Phenotype</th>
+              <th>Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono"><span class="pos">G44D</span></td>
+              <td><em>P. putida</em> UW4</td>
+              <td class="mono">~0 %</td>
+              <td class="mono">no turnover up to 40 mM ACC</td>
+              <td>Substrate-gate closed. CD/UV-Vis/T<sub>m</sub> identical to WT; loop D39–N50 modelled to block ACC entry.</td>
+              <td>Hontzeas 2004</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">D44G</span> (back)</td>
+              <td><em>P. putida</em> UW4</td>
+              <td class="mono">100 %</td>
+              <td class="mono">~3.4 mM</td>
+              <td>Full activity restored — confirms gating role.</td>
+              <td>Hontzeas 2004</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">K51T</span></td>
+              <td><em>H. saturnus</em></td>
+              <td class="mono">0 %</td>
+              <td>—</td>
+              <td>No ACC turnover. Trapped external aldimine (PDB 1J0D); enabled mechanistic snapshot.</td>
+              <td>Ose 2003</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">K51A</span></td>
+              <td><em>P.</em> sp. ACP</td>
+              <td class="mono">0 %</td>
+              <td>—</td>
+              <td>Loss of Schiff base. λ<sub>max</sub> shifts to 330 / 425 nm.</td>
+              <td>Yao 2000 (cited in Ose)</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">S78A</span></td>
+              <td><em>P.</em> sp. ACP</td>
+              <td class="mono">~0 %</td>
+              <td>—</td>
+              <td>Inactive — confirms Ser78 catalytic / anchoring role.</td>
+              <td>Karthikeyan 2004</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">Y268F</span></td>
+              <td><em>P.</em> sp. ACP</td>
+              <td class="mono">~1.7 % (k<sub>cat</sub> 1.2 → 70 min⁻¹)</td>
+              <td class="mono">1.97 mM (≈ WT)</td>
+              <td>Loss of charge-relay → Tyr294 stays protonated → drastic kcat collapse.</td>
+              <td>Karthikeyan 2004</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">Y268F</span> (mech)</td>
+              <td><em>P.</em> sp. ACP</td>
+              <td class="mono">k<sub>cat</sub> = 0.028 s⁻¹ (~2 %)</td>
+              <td>—</td>
+              <td>pH-rate profile: pK′ shifts to 8.7; pK<sub>3</sub> = 7.79.</td>
+              <td>Thibodeaux 2011</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">Y269F</span></td>
+              <td><em>H. saturnus</em></td>
+              <td class="mono">~10 %</td>
+              <td>—</td>
+              <td>Yeast equivalent of Y268F; milder effect.</td>
+              <td>Ose 2003</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">Y294F</span></td>
+              <td><em>P.</em> sp. ACP</td>
+              <td class="mono">0 %</td>
+              <td>—</td>
+              <td>No ACC consumption after 24 h. Removes the catalytic nucleophile entirely.</td>
+              <td>Thibodeaux 2011; Karthikeyan 2004</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">Y295F</span></td>
+              <td><em>H. saturnus</em></td>
+              <td class="mono">0 %</td>
+              <td>—</td>
+              <td>Trapped non-covalent ACC complex (PDB 1J0E); internal aldimine retained.</td>
+              <td>Ose 2003</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">E295D</span></td>
+              <td><em>P.</em> sp. ACP</td>
+              <td class="mono">~10 % (k<sub>cat</sub> 0.132 s⁻¹)</td>
+              <td>—</td>
+              <td>Slightly shorter side chain weakens PLP-N1 ion pair; k<sub>cat</sub>/K<sub>m</sub> ~2 × 10³ M⁻¹s⁻¹.</td>
+              <td>Thibodeaux 2011</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">E295S</span></td>
+              <td><em>P. putida</em> UW4</td>
+              <td class="mono">~0.3 % (8.2 vs 2811 nmol/min/mg)</td>
+              <td>—</td>
+              <td>Loss of ACCD; small (~2×) gain of D-CDes activity (35.6 vs 16 nmol/min/mg).</td>
+              <td>Todorovic 2008</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">E295S / L322T</span></td>
+              <td><em>P. putida</em> UW4</td>
+              <td class="mono">undetectable ACCD</td>
+              <td>—</td>
+              <td><strong>Interconversion:</strong> ~10× gain of D-cysteine desulfhydrase (147 vs 16 nmol/min/mg). Switches enzyme class.</td>
+              <td>Todorovic 2008</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">E296Q</span></td>
+              <td><em>H. saturnus</em></td>
+              <td class="mono">0 %</td>
+              <td>—</td>
+              <td>Yeast equivalent of E295Q — fully inactive.</td>
+              <td>Ose 2003</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">S358E / T386L</span></td>
+              <td>Tomato D-CDes</td>
+              <td class="mono">59.9 vs &lt;detection nmol/min/mg</td>
+              <td>—</td>
+              <td><strong>Reciprocal interconversion:</strong> tomato D-cysteine desulfhydrase gains ACCD activity (&gt;50×). D-CDes activity lost.</td>
+              <td>Todorovic 2008</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">T386L</span> (single)</td>
+              <td>Tomato D-CDes</td>
+              <td class="mono">trace ACCD (11.4 nmol/min/mg)</td>
+              <td>—</td>
+              <td>~11.5 % WT D-CDes retained; small ACCD gained — single residue is insufficient.</td>
+              <td>Todorovic 2008</td>
+            </tr>
+            <tr>
+              <td class="mono"><span class="pos">S358E</span> (single)</td>
+              <td>Tomato D-CDes</td>
+              <td class="mono">0 %</td>
+              <td>—</td>
+              <td>Loses both activities — single substitution disrupts cofactor electrostatics.</td>
+              <td>Todorovic 2008</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="interconv">
+      <h2>Specificity-switch double mutation</h2>
+      <div class="body">
+        <p>
+          The cleanest demonstration of how two residues control reaction outcome:
+        </p>
+
+        <table class="data">
+          <thead>
+            <tr><th>Enzyme</th><th>Position A</th><th>Position B</th><th>ACCD activity</th><th>D-CDes activity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>UW4 WT (ACCD)</td><td class="mono">Glu295</td><td class="mono">Leu322</td><td class="mono">2811 ± 76</td><td class="mono">16 ± 0.1</td></tr>
+            <tr><td>UW4 <span class="feat mutagen">E295S/L322T</span></td><td class="mono">Ser</td><td class="mono">Thr</td><td class="mono">&lt; detection</td><td class="mono">147 ± 9</td></tr>
+            <tr><td>Tomato D-CDes WT</td><td class="mono">Ser358</td><td class="mono">Thr386</td><td class="mono">&lt; detection</td><td class="mono">5784 ± 9</td></tr>
+            <tr><td>Tomato <span class="feat mutagen">S358E/T386L</span></td><td class="mono">Glu</td><td class="mono">Leu</td><td class="mono">59.9 ± 2.0</td><td class="mono">&lt; detection</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 12.5px; color: var(--text-mute); margin-top: 6px;">Specific activities in nmol·min⁻¹·mg⁻¹.</p>
+
+        <div class="callout note" style="margin-top: 14px;">
+          <strong>Engineering principle.</strong> The Glu↔Ser swap tunes the PLP pyridinium-N
+          partner (carboxylate vs hydroxyl), while the Leu↔Thr swap repositions the same residue.
+          Together they redirect the PLP-stabilised carbanion toward C–C cleavage (ACC) or
+          β-elimination (D-Cys → pyruvate + NH₃ + H₂S). A two-residue toggle therefore selects
+          between two distinct EC classes.
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="takeaways">
+      <h2>Take-aways for engineering</h2>
+      <div class="body">
+        <ul>
+          <li><strong>Hard kills:</strong> K51, S78, Y294, E295 — any non-conservative substitution wipes activity.</li>
+          <li><strong>Tunable:</strong> Y268 (charge relay) gives partial activity for fine-tuning rate.</li>
+          <li><strong>Specificity dial:</strong> E295 + L322 together control ACCD vs D-CDes choice.</li>
+          <li><strong>Gating dial:</strong> G44 sits at the substrate-entry loop — could be exploited for substrate-channel engineering.</li>
+          <li><strong>Cofactor anchor:</strong> Lys51 is the canonical PLP attachment site; substitutions trap intermediates for structural studies but are catalytically dead.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">ACC Deaminase Knowledgebase · Mutants</footer>
+<script src="js/nav.js"></script>
+</body>
+</html>

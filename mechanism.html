@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mechanism · AcdS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"></header>
+
+<div class="entry-banner">
+  <div class="inner">
+    <h1>Mechanism</h1>
+    <span class="accession">ACC → α-ketobutyrate + NH₄⁺</span>
+    <div class="badges">
+      <span class="badge ec">PLP-dependent</span>
+      <span class="badge length">Cyclopropane ring-opening</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidenav">
+    <h4>On this page</h4>
+    <a href="#overall">Overall reaction</a>
+    <a href="#kinetics">Kinetics</a>
+    <a href="#steps">Catalytic cycle</a>
+    <a href="#kies">Isotope effects</a>
+    <a href="#spec">Substrate scope</a>
+    <a href="#feedback">In-vivo regulation</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="block" id="overall">
+      <h2>The overall reaction</h2>
+      <div class="body">
+        <p style="font-family: var(--mono); font-size: 14px; background: var(--bg-alt); border: 1px solid var(--border); padding: 12px; border-radius: 3px; text-align: center;">
+          ACC (1-aminocyclopropane-1-carboxylate) + H₂O  →  α-ketobutyrate (2-oxobutanoate) + NH₃
+        </p>
+        <p>
+          ACC has no α-hydrogen (its α-carbon is a quaternary spiro-centre on the cyclopropane ring),
+          so canonical PLP β-elimination is impossible. ACC deaminase instead performs a unique
+          <strong>cyclopropane ring-opening / C–C cleavage</strong> that is mechanistically analogous to
+          γ-elimination from α-dialkyl amino acids. The cyclopropane C–C bond becomes the substrate
+          for nucleophilic attack by the conserved Tyr294 phenolate.
+        </p>
+        <p>
+          Stoichiometry (Honma 1978): one ACC consumed per one α-ketobutyrate + one NH₃; no oxygen
+          consumed; no external cofactor required. The bound PLP is regenerated each cycle.
+        </p>
+      </div>
+    </section>
+
+    <section class="block" id="kinetics">
+      <h2>Kinetic parameters</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th><em>P.</em> sp. ACP (Thibodeaux 2011)</th>
+              <th><em>P. putida</em> UW4 (Hontzeas 2004)</th>
+              <th><em>P.</em> sp. ACP (Honma 1978)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>K<sub>m</sub> (ACC)</td><td class="mono">~1 mM</td><td class="mono">3.4 ± 0.2 mM</td><td class="mono">1.5 mM</td></tr>
+            <tr><td>k<sub>cat</sub></td><td class="mono">1.32 s⁻¹</td><td class="mono">146 min⁻¹ (2.4 s⁻¹)</td><td class="mono">—</td></tr>
+            <tr><td>k<sub>cat</sub>/K<sub>m</sub></td><td class="mono">1.5 × 10⁴ M⁻¹s⁻¹</td><td class="mono">716 M⁻¹s⁻¹</td><td class="mono">—</td></tr>
+            <tr><td>pH optimum</td><td class="mono">~8.0</td><td class="mono">8.0 (bell, pKa 7.4 / 9.5)</td><td class="mono">8.5–9.0</td></tr>
+            <tr><td>T optimum</td><td class="mono">25 °C</td><td class="mono">22 °C</td><td class="mono">30 °C</td></tr>
+            <tr><td>Activation ΔH‡</td><td>—</td><td class="mono">47 ± 2 kJ/mol</td><td>—</td></tr>
+            <tr><td>Activation ΔS‡</td><td>—</td><td class="mono">−78 ± 5 J/mol·K</td><td>—</td></tr>
+            <tr><td>ΔG‡ (298 K)</td><td>—</td><td class="mono">70 ± 1 kJ/mol</td><td>—</td></tr>
+            <tr><td>T<sub>m</sub></td><td>—</td><td class="mono">60 ± 2 °C (CD); 58 °C (DSC)</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="steps">
+      <h2>Catalytic cycle</h2>
+      <div class="body">
+        <p>Each step is supported by crystal structures and / or stopped-flow spectroscopy.</p>
+
+        <div class="steps">
+          <div class="step-card">
+            <span class="n">1</span>
+            <h4>Resting enzyme (internal aldimine)</h4>
+            <p>PLP is anchored to <strong>Lys51</strong> Nε as a Schiff base. UV-Vis: ketoenamine band ~418 nm; minor enolimine at ~328 nm. A328/A418 ≈ 2.5 in UW4.</p>
+          </div>
+          <div class="step-card">
+            <span class="n">2</span>
+            <h4>Substrate entry</h4>
+            <p>ACC enters via the <strong>D39–N50 loop</strong> (gating residue <strong>Gly44</strong>; G44D blocks entry). Carboxylate is anchored by <strong>Ser78 OH</strong> (2.8 Å) and the main-chain amides of <strong>Asn79 / Gln80</strong>.</p>
+          </div>
+          <div class="step-card">
+            <span class="n">3</span>
+            <h4>Gem-diamine intermediate</h4>
+            <p>The α-amino group of ACC attacks C4′ of the internal aldimine, forming a tetrahedral gem-diamine. Stopped-flow detects 419 nm → 329 nm transition at <strong>k₁ = 260 s⁻¹</strong>.</p>
+          </div>
+          <div class="step-card">
+            <span class="n">4</span>
+            <h4>External aldimine</h4>
+            <p>Lys51 departs; PLP–ACC external aldimine forms (λ<sub>max</sub> 425 nm). Captured crystallographically as <strong>PDB 1J0D</strong> (yeast K51T) and <strong>1TZ2</strong> (bacterial + ACC).</p>
+          </div>
+          <div class="step-card">
+            <span class="n">5</span>
+            <h4>Tyr294 attack / ring opening</h4>
+            <p>Phenolate of <strong>Tyr294</strong> (pKa lowered by H-bond with <strong>Tyr268</strong>) acts as nucleophile at the <strong>pro-S β-methylene</strong> (3.0 Å). C–C cleavage opens the cyclopropane ring and yields a stabilised PLP-quinonoid.</p>
+          </div>
+          <div class="step-card">
+            <span class="n">6</span>
+            <h4>Quinonoid → β,γ-unsaturated ketimine</h4>
+            <p>The cyclopropane opening produces a vinyl-bearing electron sink. Lys51 abstracts the methylene proton (β-position), giving a β,γ-unsaturated ketimine on PLP.</p>
+          </div>
+          <div class="step-card">
+            <span class="n">7</span>
+            <h4>PLP-aminocrotonate</h4>
+            <p>Tautomerisation produces the PLP-aminocrotonate complex. Slow phase k₂ ≈ 2.3 s⁻¹ observed by stopped-flow.</p>
+          </div>
+          <div class="step-card">
+            <span class="n">8</span>
+            <h4>Hydrolytic release</h4>
+            <p>The aminocrotonate is hydrolysed off PLP, tautomerises to the α-imino acid, and decomposes to <strong>α-ketobutyrate + NH₄⁺</strong>. Lys51 re-attacks C4′ to regenerate the internal aldimine.</p>
+          </div>
+        </div>
+
+        <div class="callout warn" style="margin-top: 18px;">
+          <strong>Key catalytic insight (Karthikeyan 2004; Thibodeaux 2011).</strong> Because ACC has no α-H,
+          PLP cannot use its classical "electron-sink" route via α-deprotonation. Instead, the enzyme uses
+          the <strong>strained cyclopropane C–C bond</strong> as the bond being broken. Tyr294 is the nucleophile
+          that opens the ring at the pro-S β-CH₂, generating an unusual ring-opened quinonoid that PLP then
+          stabilises. This is one of the only known PLP enzymes to cleave a C–C bond by ring-strain release.
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="kies">
+      <h2>Isotope effects (Thibodeaux &amp; Liu 2011)</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead><tr><th>Measurement</th><th>Value</th><th>Inference</th></tr></thead>
+          <tbody>
+            <tr><td>D<sub>2</sub>O k<sub>cat</sub></td><td class="mono">5.7</td><td>Proton transfer rate-limiting at k<sub>cat</sub></td></tr>
+            <tr><td>D<sub>2</sub>O k<sub>cat</sub>/K<sub>m</sub></td><td class="mono">2.5</td><td>Partial solvent contribution at first irreversible step</td></tr>
+            <tr><td>¹³C KIE at Cα</td><td class="mono">1.015 ± 0.005</td><td>C–C bond cleavage partially rate-limiting</td></tr>
+            <tr><td>¹³C KIE at pro-S Cβ</td><td class="mono">1.017 ± 0.017</td><td>Tyr294 attack on β-carbon during ring opening</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="spec">
+      <h2>Substrate &amp; inhibitor scope</h2>
+      <div class="body">
+        <h3>Accepted substrates (Honma 1978; Hontzeas 2004)</h3>
+        <ul>
+          <li><strong>ACC</strong> (1-aminocyclopropane-1-carboxylate) — physiological substrate</li>
+          <li><strong>D-serine, D-alanine, D-valine</strong> — slowly deaminated</li>
+          <li><strong>2-alkyl-ACC, vinyl-ACC, 2-aminoisobutyric acid</strong></li>
+          <li><strong>Dimethyl-ACC, di-coronamic acid</strong></li>
+        </ul>
+        <h3>Not accepted</h3>
+        <ul>
+          <li>L-amino acids (Met, Ser, Thr, Cys, Trp, Tyr, homoserine, aminobutyric acid) — competitive inhibitors only</li>
+          <li>1-aminocyclopentane-1-carboxylate (5-membered analog) — too large for the active site</li>
+          <li>Cystathionine</li>
+        </ul>
+        <h3>Inhibitors (Honma 1978)</h3>
+        <ul>
+          <li>Carbonyl reagents that target PLP — NH₂OH (residual 12 %), PhNHNH₂ (30 %), semicarbazide (58 %), KCN (33 %), NaBH₄ (16 %); not restored by exogenous PLP</li>
+          <li>AOA (aminooxyacetate) — Ki = 3.3 ± 0.17 µM (tomato D-CDes homolog)</li>
+          <li>1,5-I-AEDANS — covalently labels <strong>Cys162</strong>, disrupting the K51–PLP aldimine</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="feedback">
+      <h2>Regulation in the cell</h2>
+      <div class="body">
+        <ul>
+          <li><strong>Inducer:</strong> ACC itself, at concentrations as low as 100 nM. Basal activity is &lt; 5 % of induced.</li>
+          <li><strong>Operon partner:</strong> <em>acdR</em> encodes an Lrp-family regulator divergently transcribed from <em>acdS</em>.</li>
+          <li><strong>Promoter elements:</strong> FNR box (microaerobic induction), Lrp/AcdR site, CRP site upstream of <em>acdS</em>.</li>
+          <li><strong>Feedback:</strong> α-ketobutyrate degrades to leucine, which inhibits AcdR/Lrp activation — providing a built-in product feedback loop.</li>
+          <li><strong>In symbiotic rhizobia:</strong> <em>acdS</em> is placed under <em>nifA / σ⁵⁴</em> control (e.g., <em>Mesorhizobium loti</em>), tying ACCD expression to nodulation.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">ACC Deaminase Knowledgebase · Mechanism</footer>
+<script src="js/nav.js"></script>
+</body>
+</html>

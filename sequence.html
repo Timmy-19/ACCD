@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequence · AcdS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"></header>
+
+<div class="entry-banner">
+  <div class="inner">
+    <h1>Sequence — AcdS <span class="italic">(Pseudomonas sp. UW4)</span></h1>
+    <span class="accession">Q5PWZ8 · 338 aa</span>
+    <div class="badges">
+      <span class="badge ec">EC 3.5.99.7</span>
+      <span class="badge length">PLP fold-type II</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidenav">
+    <h4>On this page</h4>
+    <a href="#viewer">Sequence map</a>
+    <a href="#features">Feature table</a>
+    <a href="#conservation">Cross-organism map</a>
+    <a href="#fasta">FASTA</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="block" id="viewer">
+      <h2>Annotated sequence — 338 aa</h2>
+
+      <div class="seq-track-legend">
+        <span><span class="feat modres">PLP</span> modified residue (Schiff base)</span>
+        <span><span class="feat active">ACT</span> active site</span>
+        <span><span class="feat binding">BND</span> binding site</span>
+        <span><span class="feat mutagen">MUT</span> mutagenesis</span>
+        <span><span class="swatch" style="background:rgba(46,125,50,.18)"></span> conserved motif / loop</span>
+        <span style="color:var(--text-mute)">— hover any residue for details</span>
+      </div>
+
+      <div id="sequence-display" class="sequence-display"></div>
+    </section>
+
+    <section class="block" id="features">
+      <h2>Feature table</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead>
+            <tr>
+              <th style="width: 110px;">Type</th>
+              <th style="width: 90px;">Position</th>
+              <th style="width: 280px;">Description</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="feature-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="conservation">
+      <h2>Cross-organism residue map</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Functional role</th>
+              <th><em>Pseudomonas</em> sp. UW4</th>
+              <th><em>Pseudomonas</em> sp. ACP</th>
+              <th><em>H. saturnus</em> (yeast)</th>
+              <th>Tomato D-CDes</th>
+              <th>Conservation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="feat modres">PLP</span> Schiff base lysine</td>
+                <td class="mono"><span class="pos">Lys51</span></td>
+                <td class="mono">Lys51</td>
+                <td class="mono">Lys51</td>
+                <td class="mono">Lys117</td>
+                <td>Strictly conserved</td></tr>
+            <tr><td><span class="feat active">ACT</span> Catalytic nucleophile</td>
+                <td class="mono"><span class="pos">Tyr294</span></td>
+                <td class="mono">Tyr294</td>
+                <td class="mono">Tyr295</td>
+                <td class="mono">Tyr357</td>
+                <td>Strictly conserved</td></tr>
+            <tr><td><span class="feat active">ACT</span> Charge-relay Tyr</td>
+                <td class="mono"><span class="pos">Tyr268</span></td>
+                <td class="mono">Tyr268</td>
+                <td class="mono">Tyr269</td>
+                <td class="mono">Tyr282 (modeled)</td>
+                <td>Strictly conserved</td></tr>
+            <tr><td><span class="feat active">ACT</span> Carboxylate H-bond Ser</td>
+                <td class="mono"><span class="pos">Ser78</span></td>
+                <td class="mono">Ser78</td>
+                <td class="mono">Ser78</td>
+                <td class="mono">Ser144</td>
+                <td>Conserved (S→A inactive)</td></tr>
+            <tr><td><span class="feat active">ACT</span> PLP pyridinium N partner</td>
+                <td class="mono"><span class="pos">Glu295</span></td>
+                <td class="mono">Glu295</td>
+                <td class="mono">Glu296</td>
+                <td class="mono">Ser358 *</td>
+                <td>Specificity switch</td></tr>
+            <tr><td><span class="feat binding">BND</span> PLP packing / specificity</td>
+                <td class="mono"><span class="pos">Leu322</span></td>
+                <td class="mono">Leu322</td>
+                <td class="mono">Leu323</td>
+                <td class="mono">Thr386 *</td>
+                <td>Specificity switch</td></tr>
+            <tr><td><span class="feat binding">BND</span> Substrate gate</td>
+                <td class="mono"><span class="pos">Gly44</span></td>
+                <td class="mono">Gly44</td>
+                <td class="mono">Gly44</td>
+                <td class="mono">—</td>
+                <td>Conserved in bacterial AcdS</td></tr>
+            <tr><td><span class="feat binding">BND</span> Iodoacetamide-sensitive Cys</td>
+                <td class="mono"><span class="pos">Cys162</span></td>
+                <td class="mono">Cys162</td>
+                <td class="mono">—</td>
+                <td class="mono">—</td>
+                <td>Bacterial AcdS</td></tr>
+          </tbody>
+        </table>
+        <div style="padding: 14px 18px;">
+          <div class="callout">
+            <strong>* Specificity switch.</strong> The pair <strong>Glu295 / Leu322</strong> (UW4 AcdS) versus
+            <strong>Ser358 / Thr386</strong> (tomato D-cysteine desulfhydrase) controls whether the enzyme
+            cleaves the ACC cyclopropane ring or performs D-cysteine β-elimination. The UW4 double mutant
+            <strong>E295S/L322T</strong> abolishes ACC-deaminase activity and gives ~10-fold gain of
+            D-CDes activity; the reciprocal tomato S358E/T386L mutant gains ACCD activity ~50-fold over
+            wild type. <em>Todorovic &amp; Glick, Planta 2008.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="fasta">
+      <h2>FASTA</h2>
+      <div class="body">
+        <p>Canonical reference sequence — UW4 AcdS, cross-verified between UniProt Q5PWZ8 and NCBI AFY21346.1.</p>
+        <pre style="font-family: var(--mono); font-size: 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 3px; padding: 14px; overflow-x: auto;">&gt;sp|Q5PWZ8|1A1D_PSEPU 1-aminocyclopropane-1-carboxylate deaminase OS=Pseudomonas sp. UW4 GN=acdS
+MNLNRFERYPLTFGPSPITPLKRLSEHLGGKVELYAKREDCNSGLAFGGN
+KTRKLEYLIPEAIEQGCDTLVSIGGIQSNQTRQVAAVAAHLGMKCVLVQE
+NWVNYSDAVYDRVGNIEMSRIMGADVRLDAAGFDIGIRPSWEKAMSDVVE
+RGGKPFPIPAGCSEHPYGGLGFVGFAEEVRQQEKELGFKFDYIVVCSVTG
+STQAGMVVGFAADGRSKNVIGVDASAKPEQTKAQILRIARHTAELVELGR
+EITEEDVVLDTRFAYPEYGLPNEGTLEAIRLCGSLEGVLTDPVYEGKSMH
+GMIEMVRRGEFPDGSKVLYAHLGGAPALNAYSFLFRNG</pre>
+        <p style="margin-top: 10px;">
+          <button id="copy-fasta" class="" style="font-family: var(--sans); font-size: 12px; padding: 6px 14px; border: 1px solid var(--border-strong); background: #fff; color: var(--text); border-radius: 3px; cursor: pointer;">Copy FASTA</button>
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  ACC Deaminase Knowledgebase · Sequence numbering: UW4 (Q5PWZ8)
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/sequence.js"></script>
+</body>
+</html>

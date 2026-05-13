@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structure · AcdS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"></header>
+
+<div class="entry-banner">
+  <div class="inner">
+    <h1>Structure</h1>
+    <span class="accession">PLP fold-type II · Trp-synthase β fold</span>
+    <div class="badges">
+      <span class="badge length">Homotrimer</span>
+      <span class="badge length">~110 kDa native</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidenav">
+    <h4>On this page</h4>
+    <a href="#overview">Overview</a>
+    <a href="#pdb">PDB structures</a>
+    <a href="#fold">Fold &amp; assembly</a>
+    <a href="#activesite">Active site</a>
+    <a href="#fungal">Fungal isoforms</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="block" id="overview">
+      <h2>Structural overview</h2>
+      <div class="body">
+        <p>
+          ACC deaminase belongs to <strong>fold-type II of PLP-dependent enzymes</strong>
+          (the tryptophan-synthase β-subunit superfamily), which also includes threonine deaminase
+          and O-acetylserine sulfhydrylase. Each monomer (~338 aa, ~36–42 kDa) has two domains,
+          with the active-site cleft buried between them and the PLP cofactor anchored at the
+          N-terminus of a short α-helix (residues 199–213, UW4 numbering).
+        </p>
+
+        <div class="stat-grid">
+          <div class="stat"><div class="v">Trimer</div><div class="l">native bacterial state</div></div>
+          <div class="stat"><div class="v">~110 kDa</div><div class="l">gel-filtration</div></div>
+          <div class="stat"><div class="v">36.7 kDa</div><div class="l">predicted subunit (ACP)</div></div>
+          <div class="stat"><div class="v">41.8 kDa</div><div class="l">UW4 subunit (MALDI)</div></div>
+          <div class="stat"><div class="v">3.0 mol</div><div class="l">PLP per holoenzyme</div></div>
+          <div class="stat"><div class="v">60 ± 2 °C</div><div class="l">T<sub>m</sub> (CD, UW4)</div></div>
+        </div>
+
+        <h3>Secondary-structure content (UW4, CD spectroscopy)</h3>
+        <ul>
+          <li>30 % α-helix</li>
+          <li>9 % β-strand</li>
+          <li>21 % turn</li>
+          <li>40 % random coil</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="pdb">
+      <h2>Crystal structures</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>PDB</th><th>Organism</th><th>State</th><th>Resolution</th><th>Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1TYZ" target="_blank">1TYZ</a></td>
+                <td><em>Pseudomonas</em> sp. ACP</td>
+                <td>Native holoenzyme (internal aldimine)</td>
+                <td class="mono">2.0 Å</td>
+                <td>Karthikeyan 2004</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1TZ2" target="_blank">1TZ2</a></td>
+                <td><em>Pseudomonas</em> sp. ACP</td>
+                <td>+ ACC (substrate complex)</td>
+                <td class="mono">2.3 Å</td>
+                <td>Karthikeyan 2004</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1TZM" target="_blank">1TZM</a></td>
+                <td><em>Pseudomonas</em> sp. ACP</td>
+                <td>+ β-Cl-D-Ala (substrate analog)</td>
+                <td class="mono">2.3 Å</td>
+                <td>Karthikeyan 2004</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1TZJ" target="_blank">1TZJ</a></td>
+                <td><em>Pseudomonas</em> sp. ACP</td>
+                <td>+ D-vinylglycine</td>
+                <td class="mono">2.3 Å</td>
+                <td>Karthikeyan 2004</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1TZK" target="_blank">1TZK</a></td>
+                <td><em>Pseudomonas</em> sp. ACP</td>
+                <td>+ α-ketobutyrate (product)</td>
+                <td class="mono">2.5 Å</td>
+                <td>Karthikeyan 2004</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1J0C" target="_blank">1J0C</a></td>
+                <td><em>H. saturnus</em> (yeast)</td>
+                <td>K51T mutant, PLP only</td>
+                <td class="mono">2.0 Å</td>
+                <td>Ose 2003</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1J0D" target="_blank">1J0D</a></td>
+                <td><em>H. saturnus</em></td>
+                <td>K51T · external aldimine (PLP-ACC)</td>
+                <td class="mono">2.0 Å</td>
+                <td>Ose 2003</td></tr>
+            <tr><td class="mono"><a href="https://www.rcsb.org/structure/1J0E" target="_blank">1J0E</a></td>
+                <td><em>H. saturnus</em></td>
+                <td>Y295F · non-covalent ACC complex</td>
+                <td class="mono">2.75 Å</td>
+                <td>Ose 2003</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="fold">
+      <h2>Fold &amp; quaternary assembly</h2>
+      <div class="body">
+        <ul>
+          <li><strong>Fold:</strong> tryptophan-synthase β-subunit family (fold-type II PLP enzymes).</li>
+          <li><strong>Per-monomer architecture:</strong> two domains (N-terminal large + C-terminal small); active-site cleft buried between them.</li>
+          <li><strong>Crystal packing (Karthikeyan):</strong> P2₁2₁2₁, 4 monomers in the asymmetric unit, 55.9% solvent.</li>
+          <li><strong>Functional unit:</strong> dimer in solution per Karthikeyan; trimer of identical subunits in biochemical native-mass studies (Honma 1978, Sheehy 1991, Shahid 2023). The two papers reflect crystallographic vs. solution assemblies — the biologically relevant assembly is the <strong>homotrimer</strong>.</li>
+          <li><strong>Dimer interface (Karthikeyan):</strong> buries 1786 Å² / monomer (15.5 % surface); 1089 Å² hydrophobic.</li>
+          <li><strong>Sequence identity vs. yeast <em>H. saturnus</em>:</strong> ~60 %; Cα RMSD 0.96 Å. Two insertions: 104–108 (bacterial +3 aa), 249–258 (yeast +2 aa).</li>
+          <li><strong>Disordered region:</strong> loop residues 129–140 in three of four monomers in the bacterial ASU.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="activesite">
+      <h2>Active-site architecture (UW4 numbering)</h2>
+      <div class="body">
+        <h3>PLP cofactor binding</h3>
+        <table class="data">
+          <thead><tr><th>Residue</th><th>Contact</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td class="mono"><span class="pos">Lys51</span></td><td>Nε → C4′ PLP</td><td>Internal-aldimine Schiff base</td></tr>
+            <tr><td class="mono"><span class="pos">Asn79</span></td><td>side-chain → O3′ PLP (3.0 Å)</td><td>Cofactor O3′ H-bond</td></tr>
+            <tr><td class="mono"><span class="pos">Glu295</span></td><td>carboxylate → N1 of PLP (2.6 Å)</td><td>Ion-pair with pyridinium N (electron-sink tuning)</td></tr>
+            <tr><td class="mono"><span class="pos">Lys54</span></td><td>side-chain → PLP phosphate</td><td>Charge neutralisation</td></tr>
+            <tr><td class="mono"><span class="pos">Val198 / Thr199 / Gly200 / Thr202</span></td><td>main-chain amides → PLP phosphate</td><td>Anion hole at helix N-cap</td></tr>
+            <tr><td class="mono"><span class="pos">Leu322</span></td><td>vdW packing on PLP ring</td><td>Cofactor positioning</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Substrate (ACC) recognition</h3>
+        <table class="data">
+          <thead><tr><th>Residue</th><th>Contact</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td class="mono"><span class="pos">Ser78</span></td><td>OH → ACC carboxylate (2.8 Å)</td><td>Substrate anchoring; candidate β-H base</td></tr>
+            <tr><td class="mono"><span class="pos">Asn79 / Gln80</span></td><td>main-chain amides → carboxylate</td><td>D-amino-acid stereoselectivity</td></tr>
+            <tr><td class="mono"><span class="pos">Gly44</span></td><td>substrate-gate (loop 39–50)</td><td>Gateway residue — G44D inactivates</td></tr>
+            <tr><td class="mono"><span class="pos">Tyr294</span></td><td>phenolic OH ↔ pro-S β-CH₂ of ACC (3.0 Å)</td><td>Catalytic nucleophile / general acid</td></tr>
+            <tr><td class="mono"><span class="pos">Tyr268</span></td><td>OH → Tyr294 OH (2.5 Å)</td><td>Charge-relay partner — lowers Tyr294 pKa</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn" style="margin-top: 14px;">
+          <strong>The two-tyrosine charge-relay system.</strong> The phenol of Tyr268 H-bonds the
+          phenol of Tyr294 at ~2.5 Å with the OH groups ~70° apart. This depresses Tyr294's pKa,
+          enabling it to abstract the ACC α-amino proton and act as the nucleophile that attacks
+          the pro-S β-carbon of the cyclopropane ring. Both tyrosines are strictly conserved
+          across the family; either single F substitution drops activity to ≤2 % of wild type.
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="fungal">
+      <h2>Fungal isoforms (in silico)</h2>
+      <div class="body">
+        <p>
+          Pramanik &amp; Mandal (2022) modelled <strong>40 fungal ACC-deaminase sequences</strong> from
+          19 genera (Ascomycota 74 %, Basidiomycota 26 %; <em>Colletotrichum</em>, <em>Fusarium</em>,
+          <em>Trichoderma</em>, <em>Metarhizium</em> dominate). Templates used: PDB 1F2D (yeast),
+          1TZM (Pseudomonas), 1J0A.
+        </p>
+        <ul>
+          <li><strong>Length range:</strong> 149–750 aa</li>
+          <li><strong>MW:</strong> 16.2 – 82.5 kDa</li>
+          <li><strong>pI:</strong> 4.76 – 10.06</li>
+          <li><strong>Aliphatic index:</strong> 81.5 – 100.1 (thermostable)</li>
+          <li><strong>Quaternary state:</strong> homo-dimer for 39/40; <em>Mycena galopus</em> ACCNK13 predicted as homo-tetramer</li>
+          <li><strong>Conserved motif:</strong> <span class="feat motif">PALP</span> (pyridoxal-phosphate-dependent enzyme signature) in all 40 sequences</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">ACC Deaminase Knowledgebase · Structure</footer>
+<script src="js/nav.js"></script>
+</body>
+</html>

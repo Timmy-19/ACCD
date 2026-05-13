@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACC Deaminase — A Field Guide for GEMS Taiwan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fraunces: warm, characterful serif for display. EB Garamond: classical body serif. JetBrains Mono: technical accents. Noto Sans TC: clean Traditional Chinese support. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===========================================================
+     Field-notebook aesthetic: cream paper, ink-dark text,
+     botanical green accent. Warm, scholarly, welcoming.
+     ============================================================ */
+  :root {
+    --paper: #f4ecdc;        /* aged cream */
+    --paper-dark: #ebe1ce;   /* slightly darker for cards */
+    --ink: #2a2419;          /* warm near-black */
+    --ink-soft: #5a4f3e;     /* muted body text */
+    --moss: #4a6b3a;         /* botanical green accent */
+    --moss-light: #8fa67d;   /* lighter moss for highlights */
+    --rust: #b85c38;         /* deep rust for warnings/critical */
+    --gold: #c89b3c;         /* amber for callouts */
+    --rule: #c9bda3;         /* hairline rule color */
+    --shadow: rgba(42, 36, 25, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  body {
+    background: var(--paper);
+    /* Subtle paper-grain noise so it doesn't look flat */
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 92, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(74, 107, 58, 0.04) 0%, transparent 50%);
+    color: var(--ink);
+    font-family: 'EB Garamond', 'Noto Sans TC', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Subtle paper texture overlay using a tiny SVG noise pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.25;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0 0.1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  /* ===== TOP NAVIGATION =================================== */
+  nav.topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(244, 236, 220, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Fraunces', serif;
+  }
+  nav.topbar .brand {
+    font-weight: 700; font-size: 17px; letter-spacing: 0.02em;
+  }
+  nav.topbar .brand .accent { color: var(--moss); }
+  nav.topbar .toc-toggle {
+    background: none; border: 1px solid var(--ink); color: var(--ink);
+    padding: 6px 14px; font-family: 'Fraunces', serif; font-size: 14px;
+    cursor: pointer; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  nav.topbar .toc-toggle:hover { background: var(--ink); color: var(--paper); }
+
+  /* ===== HERO ============================================ */
+  header.hero {
+    position: relative;
+    padding: 90px 32px 60px;
+    max-width: 1100px; margin: 0 auto;
+    z-index: 2;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 24px;
+  }
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: clamp(2.4rem, 6vw, 4.8rem);
+    line-height: 0.98; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 24px;
+  }
+  h1.title .italic { font-style: italic; font-weight: 400; color: var(--moss); }
+  .subtitle {
+    font-size: 1.3rem; color: var(--ink-soft);
+    max-width: 680px; font-style: italic;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    margin-top: 40px;
+    display: flex; flex-wrap: wrap; gap: 32px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--ink-soft); letter-spacing: 0.05em;
+  }
+  .hero-meta div span { display: block; color: var(--moss); font-weight: 500; margin-bottom: 4px; }
+
+  /* Decorative botanical mark */
+  .botanical {
+    position: absolute; right: 32px; top: 90px;
+    width: 180px; height: 180px; opacity: 0.45;
+  }
+
+  /* ===== HOW-TO-READ BANNER ============================== */
+  .howto {
+    max-width: 1100px; margin: 30px auto 60px; padding: 0 32px;
+    position: relative; z-index: 2;
+  }
+  .howto-card {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--moss);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .howto-card h3 {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: 1.3rem; margin-bottom: 10px; color: var(--ink);
+  }
+  .howto-card p { color: var(--ink-soft); margin-bottom: 10px; }
+  .howto-card .tip {
+    font-size: 0.95rem; color: var(--ink-soft); font-style: italic;
+    padding-top: 12px; border-top: 1px dashed var(--rule); margin-top: 14px;
+  }
+  .howto-card kbd {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85em;
+    background: var(--paper); padding: 1px 6px; border: 1px solid var(--rule);
+    border-radius: 3px; color: var(--ink);
+  }
+
+  /* ===== MAIN CONTENT WIDTH ============================== */
+  main { max-width: 1100px; margin: 0 auto; padding: 0 32px 120px; position: relative; z-index: 2; }
+
+  /* ===== SECTION STYLING ================================= */
+  section.chapter {
+    margin: 80px 0;
+    scroll-margin-top: 80px;
+  }
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.2em;
+    color: var(--moss); margin-bottom: 12px;
+  }
+  h2.section-title {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  h2.section-title .cn {
+    display: block; font-size: 0.55em; font-weight: 400;
+    color: var(--ink-soft); font-family: 'Noto Sans TC', sans-serif;
+    margin-top: 4px;
+  }
+  .section-divider {
+    width: 80px; height: 2px; background: var(--ink);
+    margin: 20px 0 30px;
+  }
+
+  /* ===== PLAIN ENGLISH BOX =============================== */
+  .plain-english {
+    background: linear-gradient(135deg, rgba(74, 107, 58, 0.08), rgba(74, 107, 58, 0.03));
+    border: 1px solid rgba(74, 107, 58, 0.25);
+    border-radius: 3px;
+    padding: 24px 28px; margin: 30px 0;
+    position: relative;
+  }
+  .plain-english::before {
+    content: '簡明說明';
+    position: absolute; top: -10px; left: 20px;
+    background: var(--paper); padding: 0 10px;
+    font-family: 'Noto Sans TC', sans-serif; font-size: 13px;
+    font-weight: 700; color: var(--moss); letter-spacing: 0.1em;
+  }
+  .plain-english .label-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 12px; display: block;
+  }
+  .plain-english p { color: var(--ink); margin-bottom: 12px; }
+  .plain-english p:last-child { margin-bottom: 0; }
+
+  /* ===== STANDARD CONTENT ================================ */
+  p { margin-bottom: 18px; color: var(--ink); }
+  p.intro-para { font-size: 1.1rem; color: var(--ink-soft); }
+  h3.sub {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 1.4rem; margin: 40px 0 14px;
+    color: var(--ink); letter-spacing: -0.01em;
+  }
+  h3.sub .cn {
+    font-family: 'Noto Sans TC', sans-serif; font-size: 0.7em;
+    font-weight: 400; color: var(--ink-soft); margin-left: 12px;
+  }
+  h4.subsub {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 1.1rem; margin: 24px 0 10px;
+    color: var(--moss);
+  }
+
+  /* ===== JARGON TOOLTIPS ================================= */
+  .jargon {
+    border-bottom: 1.5px dotted var(--moss);
+    cursor: help; position: relative;
+    color: var(--ink); font-weight: 500;
+    transition: background 0.15s;
+  }
+  .jargon:hover { background: rgba(74, 107, 58, 0.1); }
+  .jargon .tip {
+    visibility: hidden; opacity: 0;
+    position: absolute; bottom: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink); color: var(--paper);
+    padding: 12px 16px; border-radius: 3px;
+    width: 290px; font-family: 'EB Garamond', 'Noto Sans TC', serif;
+    font-size: 14px; font-weight: 400; line-height: 1.5;
+    z-index: 50; pointer-events: none;
+    transition: opacity 0.2s, visibility 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .jargon .tip::after {
+    content: ''; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: var(--ink);
+  }
+  .jargon .tip strong { color: var(--moss-light); }
+  .jargon .tip .cn-term {
+    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--gold); font-weight: 500;
+    display: block; margin-top: 6px; padding-top: 6px;
+    border-top: 1px dashed rgba(255,255,255,0.2);
+  }
+  .jargon:hover .tip { visibility: visible; opacity: 1; }
+
+  /* ===== CALLOUTS ======================================== */
+  .callout {
+    background: var(--paper-dark);
+    border-left: 4px solid var(--gold);
+    padding: 18px 24px; margin: 24px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .callout.critical { border-left-color: var(--rust); }
+  .callout.go { border-left-color: var(--moss); }
+  .callout .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; display: block;
+    margin-bottom: 6px;
+  }
+  .callout.critical .label { color: var(--rust); }
+  .callout.go .label { color: var(--moss); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ===== TABLES ========================================== */
+  .table-wrap {
+    overflow-x: auto; margin: 28px 0;
+    border: 1px solid var(--rule); border-radius: 3px;
+    background: var(--paper-dark);
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.92rem; font-family: 'EB Garamond', 'Noto Sans TC', serif;
+  }
+  th, td {
+    padding: 10px 14px; text-align: left;
+    border-bottom: 1px solid var(--rule); vertical-align: top;
+  }
+  th {
+    background: var(--ink); color: var(--paper);
+    font-family: 'Fraunces', serif; font-weight: 500;
+    letter-spacing: 0.02em; font-size: 0.9rem;
+  }
+  tbody tr:hover { background: rgba(74, 107, 58, 0.05); }
+  td code, th code {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85em;
+    color: var(--moss); font-weight: 500;
+  }
+
+  /* ===== EXPANDABLE SECTIONS ============================= */
+  details {
+    margin: 20px 0; border: 1px solid var(--rule);
+    background: var(--paper-dark); border-radius: 3px;
+    transition: all 0.3s;
+  }
+  details[open] { box-shadow: 0 2px 12px var(--shadow); }
+  summary {
+    padding: 16px 24px; cursor: pointer;
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 1.1rem; color: var(--ink);
+    list-style: none; position: relative;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+'; position: absolute; right: 24px;
+    font-size: 1.4rem; font-weight: 300; color: var(--moss);
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { content: '−'; }
+  details > div.details-body {
+    padding: 4px 28px 24px;
+    border-top: 1px dashed var(--rule);
+    margin-top: 8px;
+  }
+
+  /* ===== KEY-RESIDUE INTERACTIVE DIAGRAM ================= */
+  .residue-diagram {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule); border-radius: 3px;
+    padding: 32px; margin: 30px 0;
+  }
+  .residue-diagram h4 {
+    font-family: 'Fraunces', serif; font-size: 1.2rem;
+    margin-bottom: 6px; color: var(--ink);
+  }
+  .residue-diagram .hint {
+    font-size: 0.9rem; color: var(--ink-soft);
+    font-style: italic; margin-bottom: 24px;
+  }
+  .residue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .residue-btn {
+    background: var(--paper); border: 1px solid var(--rule);
+    padding: 16px 12px; border-radius: 3px;
+    cursor: pointer; text-align: center;
+    font-family: 'Fraunces', serif;
+    transition: all 0.2s;
+  }
+  .residue-btn:hover { border-color: var(--moss); transform: translateY(-2px); box-shadow: 0 4px 10px var(--shadow); }
+  .residue-btn.active { background: var(--moss); color: var(--paper); border-color: var(--moss); }
+  .residue-btn .res-name { font-size: 1.3rem; font-weight: 700; display: block; }
+  .residue-btn .res-role { font-size: 0.8rem; color: var(--ink-soft); margin-top: 4px; display: block; font-family: 'EB Garamond', serif; }
+  .residue-btn.active .res-role { color: rgba(244, 236, 220, 0.85); }
+  .residue-info {
+    margin-top: 24px; padding: 20px 24px;
+    background: var(--paper); border: 1px solid var(--rule);
+    border-left: 4px solid var(--moss); border-radius: 0 3px 3px 0;
+    min-height: 120px;
+  }
+  .residue-info .placeholder {
+    color: var(--ink-soft); font-style: italic; text-align: center;
+  }
+  .residue-info h5 {
+    font-family: 'Fraunces', serif; font-size: 1.2rem;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .residue-info .cn-name {
+    font-family: 'Noto Sans TC', sans-serif; color: var(--gold);
+    font-size: 0.9rem; display: block; margin-bottom: 12px;
+  }
+  .residue-info p { margin-bottom: 10px; }
+  .residue-info .mutation { font-family: 'JetBrains Mono', monospace; color: var(--rust); font-weight: 500; }
+
+  /* ===== MUTATION TABLE FILTER =========================== */
+  .mut-controls {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 20px; align-items: center;
+  }
+  .mut-controls .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); margin-right: 6px;
+  }
+  .filter-btn {
+    background: var(--paper); border: 1px solid var(--rule);
+    padding: 6px 14px; border-radius: 20px;
+    font-family: 'Fraunces', serif; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.15s;
+    color: var(--ink);
+  }
+  .filter-btn:hover { border-color: var(--moss); }
+  .filter-btn.active { background: var(--moss); color: var(--paper); border-color: var(--moss); }
+
+  /* ===== STRATEGY CARDS (SECTION 8) ====================== */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; margin: 30px 0;
+  }
+  .strategy-card {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    border-radius: 3px;
+    border-top: 5px solid var(--rule);
+    transition: transform 0.2s;
+  }
+  .strategy-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--shadow); }
+  .strategy-card.go { border-top-color: var(--moss); }
+  .strategy-card.cond { border-top-color: var(--gold); }
+  .strategy-card.nogo { border-top-color: var(--rust); }
+  .strategy-card .verdict {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .strategy-card.go .verdict { color: var(--moss); }
+  .strategy-card.cond .verdict { color: var(--gold); }
+  .strategy-card.nogo .verdict { color: var(--rust); }
+  .strategy-card h4 {
+    font-family: 'Fraunces', serif; font-size: 1.3rem;
+    font-weight: 700; margin-bottom: 10px; color: var(--ink);
+  }
+  .strategy-card p { font-size: 0.95rem; margin-bottom: 10px; }
+  .strategy-card .stats {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+    color: var(--ink-soft); padding-top: 12px;
+    border-top: 1px dashed var(--rule); margin-top: 12px;
+  }
+  .strategy-card .stats div { display: flex; justify-content: space-between; margin-bottom: 3px; }
+
+  /* ===== TOC SIDEBAR ===================================== */
+  .toc-sidebar {
+    position: fixed; top: 0; right: -340px; width: 340px;
+    height: 100vh; background: var(--paper);
+    border-left: 1px solid var(--rule);
+    padding: 80px 28px 28px;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 99;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+  }
+  .toc-sidebar.open { right: 0; }
+  .toc-sidebar h3 {
+    font-family: 'Fraunces', serif; font-size: 1rem;
+    color: var(--moss); margin-bottom: 18px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .toc-sidebar a {
+    display: block; padding: 8px 0;
+    color: var(--ink); text-decoration: none;
+    font-family: 'EB Garamond', serif; font-size: 1rem;
+    border-bottom: 1px dashed var(--rule);
+    transition: color 0.15s, padding-left 0.15s;
+  }
+  .toc-sidebar a:hover { color: var(--moss); padding-left: 8px; }
+  .toc-sidebar a .num {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    color: var(--moss); margin-right: 10px;
+  }
+  .toc-overlay {
+    position: fixed; inset: 0; background: rgba(42, 36, 25, 0.4);
+    z-index: 98; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .toc-overlay.open { opacity: 1; visibility: visible; }
+
+  /* ===== FINAL CTA / FOOTER ============================== */
+  footer.endmatter {
+    margin-top: 100px; padding: 60px 32px;
+    border-top: 2px solid var(--ink);
+    text-align: center; max-width: 1100px; margin-left: auto; margin-right: auto;
+  }
+  footer h2 {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 1.8rem; color: var(--ink); margin-bottom: 18px;
+  }
+  footer p { color: var(--ink-soft); max-width: 600px; margin: 0 auto 14px; }
+  footer .sig {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.2em; color: var(--moss); margin-top: 32px;
+    text-transform: uppercase;
+  }
+
+  /* ===== ANIMATIONS ====================================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  header.hero > * { animation: fadeUp 0.8s ease-out backwards; }
+  header.hero .eyebrow { animation-delay: 0.05s; }
+  header.hero h1.title { animation-delay: 0.15s; }
+  header.hero .subtitle { animation-delay: 0.3s; }
+  header.hero .hero-meta { animation-delay: 0.45s; }
+
+  /* ===== RESPONSIVE ====================================== */
+  @media (max-width: 700px) {
+    body { font-size: 16px; }
+    header.hero { padding: 50px 20px 40px; }
+    .botanical { display: none; }
+    main { padding: 0 20px 80px; }
+    .howto { padding: 0 20px; }
+    nav.topbar { padding: 12px 20px; }
+    .toc-sidebar { width: 85%; right: -90%; }
+    .jargon .tip { width: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== TOP NAV ====================== -->
+<nav class="topbar">
+  <div class="brand">GEMS Taiwan · <span class="accent">ACC Deaminase Field Guide</span></div>
+  <button class="toc-toggle" onclick="toggleTOC()">章節索引 · Contents</button>
+</nav>
+
+<!-- ====================== TOC SIDEBAR ====================== -->
+<div class="toc-overlay" onclick="toggleTOC()"></div>
+<aside class="toc-sidebar" id="toc">
+  <h3>Sections · 章節</h3>
+  <a href="#summary" onclick="toggleTOC()"><span class="num">00</span>Executive Summary</a>
+  <a href="#sec1" onclick="toggleTOC()"><span class="num">01</span>Structural Biology</a>
+  <a href="#sec2" onclick="toggleTOC()"><span class="num">02</span>Mutation Catalog</a>
+  <a href="#sec3" onclick="toggleTOC()"><span class="num">03</span>Heterologous Expression</a>
+  <a href="#sec4" onclick="toggleTOC()"><span class="num">04</span>Biochemistry</a>
+  <a href="#sec5" onclick="toggleTOC()"><span class="num">05</span>Regulation</a>
+  <a href="#sec6" onclick="toggleTOC()"><span class="num">06</span>Natural Diversity</a>
+  <a href="#sec7" onclick="toggleTOC()"><span class="num">07</span>Current Frontier</a>
+  <a href="#sec8" onclick="toggleTOC()"><span class="num">08</span>Engineering Strategy</a>
+  <a href="#mutations" onclick="toggleTOC()"><span class="num">★</span>Master Mutation Table</a>
+  <a href="#reading" onclick="toggleTOC()"><span class="num">★</span>Priority Reading</a>
+</aside>
+
+<!-- ====================== HERO ====================== -->
+<header class="hero">
+  <div class="eyebrow">A Literature Field Guide · iGEM 2026 · 高中組合成生物學</div>
+  <h1 class="title">
+    Engineering an enzyme that<br>
+    <span class="italic">talks plants down</span> from stress.
+  </h1>
+  <p class="subtitle">
+    Everything published about ACC deaminase — the protein at the heart of our project — distilled for non-experts, with the jargon translated and the mechanism unpacked.
+  </p>
+  <div class="hero-meta">
+    <div><span>Enzyme</span>ACC deaminase (EC 4.1.99.4)</div>
+    <div><span>Gene</span>acdS</div>
+    <div><span>Chassis</span>Bacillus subtilis 168</div>
+    <div><span>Compiled</span>May 2026</div>
+  </div>
+
+  <!-- Decorative botanical SVG: stylized leaf with bacterium -->
+  <svg class="botanical" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#4a6b3a" stroke-width="1.2">
+      <path d="M100,30 Q70,80 100,170 Q130,80 100,30 Z" />
+      <path d="M100,40 L100,170" stroke-width="0.8" />
+      <path d="M100,60 Q85,75 75,90 M100,80 Q85,95 75,110 M100,100 Q85,115 75,130 M100,60 Q115,75 125,90 M100,80 Q115,95 125,110 M100,100 Q115,115 125,130" stroke-width="0.5" />
+      <ellipse cx="60" cy="155" rx="8" ry="5" fill="#8fa67d" fill-opacity="0.6" stroke="#4a6b3a"/>
+      <ellipse cx="140" cy="50" rx="6" ry="4" fill="#8fa67d" fill-opacity="0.6" stroke="#4a6b3a"/>
+      <circle cx="135" cy="160" r="3" fill="#b85c38" fill-opacity="0.7"/>
+    </g>
+  </svg>
+</header>
+
+<!-- ====================== HOW TO READ ====================== -->
+<div class="howto">
+  <div class="howto-card">
+    <h3>How to read this guide · 閱讀方式</h3>
+    <p><strong>Hover over any <span class="jargon">dotted word<span class="tip"><strong>Like this!</strong> Hover (or tap on mobile) on any dotted word to see a plain-English definition and the Traditional Chinese term.<span class="cn-term">中文：把滑鼠移到虛線單字上會出現解釋。</span></span></span></strong> to see what it means in plain English, with the 繁體中文 term too.</p>
+    <p>Each section opens with a <em>Plain English Summary</em> box (簡明說明). Read just those if you only have 10 minutes. The deeper parts are inside <kbd>+</kbd> drop-downs you can open when you want more.</p>
+    <p class="tip">Built for the GEMS Taiwan 2026 team. If something is still confusing, that's our fault, not yours — flag it and we'll rewrite that part.</p>
+  </div>
+</div>
+
+<!-- ====================== MAIN ====================== -->
+<main>
+
+<!-- ====================== EXECUTIVE SUMMARY ====================== -->
+<section class="chapter" id="summary">
+  <div class="section-number">SECTION 00</div>
+  <h2 class="section-title">The big picture, in one page
+    <span class="cn">一頁總覽</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>ACC deaminase is an enzyme that bacteria use to "eat" a molecule called <span class="jargon">ACC<span class="tip"><strong>ACC</strong> = 1-aminocyclopropane-1-carboxylate. The chemical plants make right before they make ethylene, the "I'm stressed" hormone.<span class="cn-term">中文：植物在製造乙烯（壓力激素）前的前驅物。</span></span></span>. Plants make ACC when they're stressed — too salty soil, too hot, too dry — and ACC turns into the stress hormone ethylene. Bacteria that eat ACC <em>lower</em> the plant's stress signal, so the plant stays healthier.</p>
+    <p>Our project: build a <em>Bacillus subtilis</em> that produces ACC deaminase <em>only when soil sensors say the plant is stressed</em>, controlled by green light from LEDs (our <span class="jargon">CcaSR<span class="tip"><strong>CcaSR</strong> = a green/red light-sensing system from cyanobacteria. Green light turns gene expression ON, red light turns it OFF.<span class="cn-term">中文：來自藍綠菌的綠光/紅光感應系統，控制基因表達。</span></span></span> optogenetic switch), and squeeze the enzyme out of the cell so it can reach plant roots.</p>
+    <p>This guide reviews <em>everything ever published</em> about ACC deaminase mutations and engineering — so we know what's been tried, what's never been tried, and where our novelty lies.</p>
+  </div>
+
+  <h3 class="sub">What the literature actually says</h3>
+  <p>The field is dominated by three research lineages: the <strong>Glick lab</strong> at Waterloo (cloning, regulation, plant phenotypes since 1995), the <strong>Liu/Karthikeyan</strong> structural team at UT-Austin (the canonical crystal structures, 2003–2011), and the <strong>Yao/Tanaka/Honma</strong> group at Hokkaido (the yeast enzyme structure).</p>
+
+  <p>The mechanism is now well understood: a residue called <span class="jargon">Tyr294<span class="tip"><strong>Tyr294</strong> = the 294th amino acid in the enzyme, a tyrosine. It's the chemical "scissors" that cracks open the cyclopropane ring of ACC.<span class="cn-term">中文：第294位酪胺酸 — 切開ACC環的關鍵殘基。</span></span></span> acts as a chemical "nucleophile" that cracks open the strained three-carbon ring of ACC. Mutating it to phenylalanine (Y294F) kills the enzyme completely.</p>
+
+  <div class="callout critical">
+    <span class="label">⚠ Surprising and important</span>
+    <p>Despite 45+ years of research, <strong>no one has ever published a mutation that made ACC deaminase work <em>better</em> than wild-type.</strong> No directed evolution, no adaptive laboratory evolution, no Rosetta-redesigned variants. The protein-engineering space for this enzyme is almost completely empty — which is both why our project is novel and why ambitious engineering goals carry real risk.</p>
+  </div>
+
+  <h3 class="sub">Our team's strategic recommendation</h3>
+  <p>Of the six engineering directions we evaluated, two are clear <strong>GO</strong>: signal-peptide engineering to <span class="jargon">secrete<span class="tip"><strong>Secrete</strong> = the cell exports the protein outside itself. Required so our enzyme can pass through the TFF membrane and reach plant roots.<span class="cn-term">中文：分泌 — 將蛋白質排出細胞外。</span></span></span> the enzyme out of <em>B. subtilis</em>, and a "minimal mutation synthon" approach where we convert a related enzyme into an ACCD using just two mutations. One direction is <strong>CONDITIONAL</strong> (pH engineering) and three are <strong>NO-GO</strong> for our timeline. Full reasoning in <a href="#sec8" style="color:var(--moss); text-decoration:underline;">Section 08</a>.</p>
+</section>
+
+<!-- ====================== SECTION 1: STRUCTURE ====================== -->
+<section class="chapter" id="sec1">
+  <div class="section-number">SECTION 01</div>
+  <h2 class="section-title">What does the enzyme look like?
+    <span class="cn">這個酵素長什麼樣？</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>ACC deaminase is a protein made of <strong>three identical copies stuck together</strong> (a "trimer"). At each junction between two copies, there's a pocket where the chemistry happens. Inside the pocket sits a vitamin-B6-derived helper molecule called <span class="jargon">PLP<span class="tip"><strong>PLP</strong> = pyridoxal-5'-phosphate. A derivative of vitamin B6 that many enzymes use as a chemical "co-pilot" to do reactions on amino acids.<span class="cn-term">中文：磷酸吡哆醛 — 維生素B6衍生物，許多酵素的輔因子。</span></span></span>, which acts like a chemical co-pilot.</p>
+    <p>About <strong>10 crystal structures</strong> of ACCD exist (you can download them from the PDB database). They all agree on the geometry. We know exactly which amino acids matter, what each one does, and what happens when you mutate them.</p>
+  </div>
+
+  <h3 class="sub">The ten crystal structures<span class="cn">十個晶體結構</span></h3>
+  <p>If you want to literally <em>see</em> the enzyme, go to the Protein Data Bank (rcsb.org) and search any of these IDs. They're free, interactive 3D models.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+    <tr><th>PDB ID</th><th>Organism</th><th>What it shows</th><th>Citation</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><code>1F2D</code></td><td><em>Hansenula saturnus</em> (yeast)</td><td>First ever ACCD structure. Confirmed the trimer.</td><td>Yao et al. 2000</td></tr>
+    <tr><td><code>1J0A / 1J0B / 1J0E</code></td><td><em>H. saturnus</em></td><td>Yeast enzyme + inhibitor + key mutants (K51T, Y295F) trapping reaction intermediates</td><td>Ose et al. 2003</td></tr>
+    <tr><td><code>1L2K</code></td><td><em>Pyrococcus horikoshii</em> (archaea)</td><td>Heat-loving ACCD-like cousin from a deep-sea organism</td><td>Fujino et al. 2004</td></tr>
+    <tr><td><code>1RQX</code></td><td><em>Pseudomonas</em> sp. ACP</td><td>The bacterial reference structure — the one most papers use</td><td>Karthikeyan et al. 2004</td></tr>
+    <tr><td><code>1TZ2</code></td><td><em>Pseudomonas</em> sp. ACP</td><td><strong>+ ACC substrate</strong> — actually caught the enzyme mid-reaction</td><td>Karthikeyan et al. 2004</td></tr>
+    <tr><td><code>1TZJ / 1TZK / 1TZM</code></td><td><em>Pseudomonas</em> sp. ACP</td><td>+ various substrate analogues and products</td><td>Karthikeyan et al. 2004</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout">
+    <span class="label">Heads-up · 重要提醒</span>
+    <p>There is <strong>no published crystal structure of the <em>P. putida</em> UW4 enzyme</strong> — the one Glick's lab uses most. When papers cite "UW4 numbering," they're really using the ACP structure and aligning UW4's sequence onto it. AlphaFold predicts UW4 reasonably well, but no one has crystallized it.</p>
+  </div>
+
+  <h3 class="sub">The six residues that do everything<span class="cn">關鍵的六個胺基酸</span></h3>
+  <p>Out of the ~338 amino acids in the enzyme, just <strong>six of them</strong> do almost all the catalytic work. Click any of the buttons below to see what each one does and what happens when you mutate it.</p>
+
+  <div class="residue-diagram">
+    <h4>Interactive: Click a residue to learn its role</h4>
+    <p class="hint">All numbers refer to <em>Pseudomonas</em> sp. ACP (the reference structure). UW4 numbering is +1 for each (Lys51 = Lys51, Tyr294 = Tyr295, etc.).</p>
+
+    <div class="residue-grid">
+      <button class="residue-btn" data-res="K51">
+        <span class="res-name">Lys51</span>
+        <span class="res-role">PLP anchor</span>
+      </button>
+      <button class="residue-btn" data-res="S78">
+        <span class="res-name">Ser78</span>
+        <span class="res-role">Substrate grip</span>
+      </button>
+      <button class="residue-btn" data-res="Y268">
+        <span class="res-name">Tyr268</span>
+        <span class="res-role">Charge relay</span>
+      </button>
+      <button class="residue-btn" data-res="Y294">
+        <span class="res-name">Tyr294</span>
+        <span class="res-role">The "scissors"</span>
+      </button>
+      <button class="residue-btn" data-res="E295">
+        <span class="res-name">Glu295</span>
+        <span class="res-role">Electron sink</span>
+      </button>
+      <button class="residue-btn" data-res="L322">
+        <span class="res-name">Leu322</span>
+        <span class="res-role">Pocket floor</span>
+      </button>
+    </div>
+
+    <div class="residue-info" id="residueInfo">
+      <p class="placeholder">↑ Click any residue above</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>Deep dive · The full chemical mechanism, step by step</summary>
+    <div class="details-body">
+      <p>This is what happens in the active site, one step at a time:</p>
+      <ol style="padding-left: 24px; margin: 16px 0;">
+        <li style="margin-bottom: 12px;"><strong>Resting state.</strong> PLP is bonded to Lys51 via a <span class="jargon">Schiff base<span class="tip"><strong>Schiff base</strong> = a chemical bond where a nitrogen replaces oxygen on a carbon. Reversible and common in PLP enzymes.<span class="cn-term">中文：希夫鹼 — 含碳氮雙鍵的可逆化學鍵。</span></span></span> (the "internal aldimine").</li>
+        <li style="margin-bottom: 12px;"><strong>ACC enters</strong> the pocket. Its nitrogen attacks PLP, kicking off Lys51 in a "swap" reaction (forming the "external aldimine"). Briefly, both Lys51 and the substrate nitrogen are attached to PLP at the same time — this is the <em>gem-diamine</em> intermediate, and it was actually caught on camera in crystal structure 1TZ2.</li>
+        <li style="margin-bottom: 12px;"><strong>Tyr294 attacks.</strong> Its phenolic OH (made extra reactive by Tyr268's hydrogen-bond support) lunges at one of the strained carbons of the cyclopropane ring. The ring snaps open.</li>
+        <li style="margin-bottom: 12px;"><strong>Proton transfer.</strong> Lys51 (now free) plucks a hydrogen off the newly opened carbon.</li>
+        <li style="margin-bottom: 12px;"><strong>Tyr294 leaves.</strong> An α,β-unsaturated intermediate forms. Water hydrolyzes it.</li>
+        <li><strong>Products released:</strong> α-ketobutyrate and ammonia (NH₃). The enzyme is reset.</li>
+      </ol>
+      <p>The reason the mechanism is so well understood is that mutating Tyr294 to phenylalanine (Y294F) — which removes <em>only</em> the hydroxyl group while keeping the ring — completely abolishes activity. That's a chemistry-textbook clean result.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Why does it have to be a trimer? · 為什麼一定要是三聚體？</summary>
+    <div class="details-body">
+      <p>The active site sits <em>at the interface</em> between two subunits. So a single subunit alone has half an active site — useless. Three subunits make three complete active sites at the three pairwise interfaces.</p>
+      <p><strong>This matters for our TFF delivery design.</strong> Our system relies on a 50 kDa <span class="jargon">MWCO<span class="tip"><strong>MWCO</strong> = molecular weight cut-off. The pore size of the filter membrane. 50 kDa means molecules under 50,000 Daltons pass through, larger ones don't.<span class="cn-term">中文：分子量截留值 — 過濾膜的孔徑。</span></span></span> membrane. One ACCD subunit is ~36 kDa (passes through), but the active trimer is ~108 kDa (gets retained). If the trimer falls apart after secretion, the monomers pass through the membrane but they're <em>inactive</em>. We need to verify the trimer reassembles outside the cell.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ====================== SECTION 2: MUTATIONS ====================== -->
+<section class="chapter" id="sec2">
+  <div class="section-number">SECTION 02</div>
+  <h2 class="section-title">Every mutation ever published
+    <span class="cn">所有發表過的突變</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>We searched every published paper for every mutation ever made to ACC deaminase. The result is surprising: the list is <strong>short</strong>. Only about 17 distinct mutations have been published across 45 years, and almost all of them either <em>break</em> the enzyme or <em>swap its function</em> with a related enzyme called <span class="jargon">DCD<span class="tip"><strong>DCD</strong> = D-cysteine desulfhydrase. An enzyme that eats D-cysteine (the mirror image of normal cysteine). Same protein family as ACCD, different job.<span class="cn-term">中文：D-半胱胺酸脫硫酶 — 與ACCD同家族的酵素。</span></span></span>.</p>
+    <p><strong>Zero published mutations make the enzyme better.</strong> No one has ever lowered the K_M, raised the k_cat, or shifted the pH optimum successfully. That's a gap — and gaps are where iGEM points live.</p>
+  </div>
+
+  <h3 class="sub">The headline finding<span class="cn">最重要的發現</span></h3>
+  <p>The most cited mutation work is <strong>Todorovic & Glick 2008</strong>. They showed that just <em>two</em> amino acid changes — <code style="color:var(--rust); font-family:'JetBrains Mono',monospace;">E295S + L322T</code> — convert ACC deaminase into D-cysteine desulfhydrase, and the reverse mutations partly convert DCD into ACCD. These two residues are the minimum substrate-specificity switch.</p>
+
+  <p>The second most cited body of work is <strong>Liu et al. 2011</strong> and the related Karthikeyan structural papers. They built the mechanism evidence: alanine-scanned the active site, showed Y294F is dead, Y268F is crippled, S78A is slow.</p>
+
+  <div class="callout critical">
+    <span class="label">A cautionary tale</span>
+    <p>Bharath et al. 2012 tried to do the <em>reverse</em> mutation in a different DCD scaffold (from <em>Salmonella</em>). The single mutation T288E — which is supposed to install the "electron sink" residue Glu295 — <strong>destroyed PLP binding entirely</strong>. The enzyme would no longer hold its cofactor. Lesson: scaffold matters. The same mutation that works in tomato DCD may not work in another DCD. <strong>This is critical for our Option F design.</strong></p>
+  </div>
+
+  <details>
+    <summary>The full mutation catalog · 完整突變列表</summary>
+    <div class="details-body">
+
+      <div class="mut-controls">
+        <span class="label">Filter:</span>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="accd">ACCD only</button>
+        <button class="filter-btn" data-filter="homolog">Homolog only</button>
+        <button class="filter-btn" data-filter="dead">Kills the enzyme</button>
+        <button class="filter-btn" data-filter="switch">Switches function</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="mutTable">
+          <thead>
+          <tr><th>#</th><th>Tag</th><th>Mutation</th><th>Effect</th><th>Citation</th></tr>
+          </thead>
+          <tbody>
+          <tr data-tag="accd dead"><td>1</td><td>ACCD</td><td><code>K51A</code> (<em>Pseudomonas</em> ACP)</td><td>Inactive. PLP-anchor lysine gone.</td><td>Karthikeyan 2004; Liu 2011</td></tr>
+          <tr data-tag="accd dead"><td>2</td><td>ACCD</td><td><code>K51T</code> (yeast)</td><td>Inactive. Used to trap intermediate for PDB 1J0E.</td><td>Ose 2003</td></tr>
+          <tr data-tag="accd"><td>3</td><td>ACCD</td><td><code>S78A</code></td><td>~100× slower. Substrate-anchor lost.</td><td>Liu lab, via Hontzeas 2006</td></tr>
+          <tr data-tag="accd"><td>4</td><td>ACCD</td><td><code>Y268F</code></td><td>~25× slower. Charge relay broken.</td><td>Liu 2011</td></tr>
+          <tr data-tag="accd dead"><td>5</td><td>ACCD</td><td><code>Y294F</code></td><td><strong>Dead.</strong> The catalytic nucleophile.</td><td>Liu 2011</td></tr>
+          <tr data-tag="accd dead"><td>6</td><td>ACCD</td><td><code>Y295F</code> (yeast)</td><td>Dead. Same as #5 in yeast.</td><td>Ose 2003</td></tr>
+          <tr data-tag="accd switch"><td>7</td><td>ACCD</td><td><code>E296S + L323T</code> (UW4)</td><td><strong>ACCD → DCD function switch.</strong> Two mutations swap substrate.</td><td><strong>Todorovic & Glick 2008</strong></td></tr>
+          <tr data-tag="accd switch"><td>8</td><td>tomato DCD</td><td>Reverse of #7</td><td>DCD → weak ACCD. Foundational for our Option F.</td><td>Todorovic & Glick 2008</td></tr>
+          <tr data-tag="homolog dead"><td>9</td><td>Homolog</td><td><code>T288E</code> (<em>Salmonella</em> DCyD)</td><td><strong>Destroys PLP binding.</strong> Cautionary.</td><td>Bharath 2012</td></tr>
+          <tr data-tag="homolog dead"><td>10</td><td>Homolog</td><td><code>T315L + T288E</code></td><td>Also destroys PLP binding.</td><td>Bharath 2012</td></tr>
+          <tr data-tag="accd"><td>11</td><td>ACCD</td><td>Δ<em>acdS</em> knockout (Tn5)</td><td>Loss of plant-growth promotion.</td><td>Glick 1994</td></tr>
+          <tr data-tag="accd"><td>12</td><td>ACCD</td><td>Δ<em>acdS</em> knockout (UW4)</td><td>Confirms acdS necessary for PGPR phenotype.</td><td>Li 2000</td></tr>
+          <tr data-tag="accd"><td>13</td><td>ACCD</td><td>His6 tag (N/C term)</td><td>Minimal effect — termini are flexible.</td><td>Hontzeas 2004</td></tr>
+          <tr data-tag="accd"><td>14</td><td>ACCD</td><td>LacZ / GFP fusion</td><td>Tolerated — C-terminus is permissive.</td><td>Grichko 2000; Li 2001</td></tr>
+          <tr data-tag="homolog"><td>15</td><td>Homolog</td><td>phAHP (archaeal)</td><td>Naturally low K_M for ACC, thermostable.</td><td>Fujino 2004</td></tr>
+          <tr data-tag="homolog"><td>16</td><td>Homolog</td><td>StDCyD (wild-type)</td><td>Reference scaffold for #9, #10.</td><td>Bharath 2012</td></tr>
+          <tr data-tag="homolog"><td>17</td><td>Homolog</td><td>AtDCD (Arabidopsis)</td><td>Originally misannotated as acdS — actually DCD.</td><td>Riemenschneider 2005</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-top: 16px; font-style: italic; color: var(--ink-soft); font-size: 0.95rem;">
+        Note: "Kills the enzyme" filter shows mutations that drop activity to ~0. "Switches function" filter shows mutations that convert one enzyme into another.
+      </p>
+    </div>
+  </details>
+</section>
+
+<!-- ====================== SECTION 3: EXPRESSION ====================== -->
+<section class="chapter" id="sec3">
+  <div class="section-number">SECTION 03</div>
+  <h2 class="section-title">Putting the gene in different hosts
+    <span class="cn">把基因放進不同的細菌</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>Almost every published study expresses ACCD in <em>E. coli</em>. It works easily — yields are 5–30 mg per liter of culture, the protein is soluble, no toxicity.</p>
+    <p><strong>Nobody has published expression of ACCD in <em>Bacillus subtilis</em>.</strong> This is what we're going to do. It's not difficult in principle (B. subtilis is the standard Gram-positive host) but we'll be the first to publish it for this specific enzyme.</p>
+  </div>
+
+  <p>When you put a gene from one organism into another organism, several things can go wrong: the codons might not match (codon optimization needed), the cofactor might not be available, the protein might be toxic, or it might fold incorrectly and form <span class="jargon">inclusion bodies<span class="tip"><strong>Inclusion bodies</strong> = blobs of misfolded protein that aggregate together. The cell can't break them down and they're functionally useless.<span class="cn-term">中文：包涵體 — 錯誤摺疊的蛋白質聚集物，沒有活性。</span></span></span>.</p>
+
+  <p>For ACCD in <em>E. coli</em>: none of these problems show up. PLP is abundant in <em>E. coli</em>, ACC isn't naturally present so there's no substrate-toxicity issue, and the protein folds correctly.</p>
+
+  <div class="callout critical">
+    <span class="label">⚠ Critical sourcing decision</span>
+    <p>Several recent papers claim "<em>Bacillus</em> ACCD." A 2015 paper by Li et al. and a 2014 paper by Nascimento et al. systematically showed that <strong>most "Bacillus acdS" sequences are actually TdcB</strong> (threonine dehydratase), a related but different enzyme that just happens to have weak ACCD activity. <strong>Do NOT clone acdS from any Bacillus genome.</strong> Use the well-characterized <em>P. putida</em> UW4 or <em>Pseudomonas</em> sp. ACP gene instead.</p>
+  </div>
+</section>
+
+<!-- ====================== SECTION 4: BIOCHEMISTRY ====================== -->
+<section class="chapter" id="sec4">
+  <div class="section-number">SECTION 04</div>
+  <h2 class="section-title">How well does the enzyme actually work?
+    <span class="cn">這個酵素效率如何？</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>Enzymes have two key numbers: <strong>K_M</strong> (how much substrate it needs to be half-active — lower = more sensitive) and <strong>k_cat</strong> (how fast it works once it has substrate).</p>
+    <p>ACCD's K_M is <strong>about 1.5–17 millimolar</strong> across every organism ever tested. But ACC in the soil around plant roots is in the <strong>micromolar</strong> range — a thousand times lower. This means ACCD is operating well below its sweet spot in the real world. It's a structural quirk of how the active-site pocket is shaped, and no one has fixed it.</p>
+    <p>The pH optimum is <strong>always 8.0–9.0</strong> (alkaline). Soil is usually <strong>5.5–7.0</strong> (acidic to neutral). This is another mismatch — and another gap in the literature.</p>
+  </div>
+
+  <h3 class="sub">The K_M problem, visualized<span class="cn">K_M 數值對比</span></h3>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+    <tr><th>Source organism</th><th>K_M for ACC</th><th>pH optimum</th><th>Temp optimum</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><em>Pseudomonas</em> sp. ACP</td><td>1.5 mM</td><td>8.5</td><td>30 °C</td></tr>
+    <tr><td><em>P. putida</em> UW4 (most-used)</td><td>3.4 mM</td><td>8.0</td><td>30 °C</td></tr>
+    <tr><td><em>P. putida</em> GR12-2</td><td>4.8 mM</td><td>8.0</td><td>—</td></tr>
+    <tr><td><em>Hansenula saturnus</em> (yeast)</td><td>2.6 mM</td><td>8.5</td><td>—</td></tr>
+    <tr><td><em>Penicillium citrinum</em></td><td>4.8 mM</td><td>8.5</td><td>35 °C</td></tr>
+    <tr><td><em>Pyrococcus horikoshii</em> (archaeal cousin)</td><td>~17 mM</td><td>9.0</td><td><strong>80 °C</strong></td></tr>
+    <tr><td><em>Rhizobium leguminosarum</em></td><td>~5 mM</td><td>8.0</td><td>—</td></tr>
+    <tr><td style="background: rgba(184,92,56,0.1);"><strong>Rhizosphere (where we deploy)</strong></td><td style="background: rgba(184,92,56,0.1);"><strong>1–100 μM (way lower!)</strong></td><td style="background: rgba(184,92,56,0.1);"><strong>5.5–7.0</strong></td><td style="background: rgba(184,92,56,0.1);">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Glick has argued the high K_M is a <em>feature</em>, not a bug: ACCD only kicks in when ACC is locally elevated, i.e. under real stress. The enzyme is naturally "tuned" to ignore low background ACC. Whether that's a satisfying explanation or just rationalization of an evolutionary accident is an open question.</p>
+</section>
+
+<!-- ====================== SECTION 5: REGULATION ====================== -->
+<section class="chapter" id="sec5">
+  <div class="section-number">SECTION 05</div>
+  <h2 class="section-title">How is the gene normally turned on and off?
+    <span class="cn">基因如何自然調控？</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>In nature, <em>acdS</em> is controlled by a small protein called <strong>AcdR</strong> (and sometimes a partner AcdB). When ACC builds up, AcdR senses it and turns <em>acdS</em> ON. When the amino acid leucine builds up (a downstream signal that says "we have enough nitrogen"), it turns OFF again. There's also oxygen sensing (FNR box) and carbon sensing (CRP box).</p>
+    <p>For us, this matters mostly as <em>what we're replacing</em>. Our optogenetic + stress-promoter design (CcaSR + P_opuA + P_gsiB) sidesteps all of this and gives us direct, synthetic control.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">Note · 重要訊息</span>
+    <p>The natural AcdR/AcdB regulatory architecture is <strong>only found in Proteobacteria</strong> (Pseudomonas, Rhizobium, Sinorhizobium, etc.). It does <strong>not exist in <em>Bacillus subtilis</em></strong> or other Firmicutes. So when we move <em>acdS</em> into <em>B. subtilis</em>, we lose all the native regulation anyway — which is fine, because we're building our own.</p>
+  </div>
+</section>
+
+<!-- ====================== SECTION 6: DIVERSITY ====================== -->
+<section class="chapter" id="sec6">
+  <div class="section-number">SECTION 06</div>
+  <h2 class="section-title">Where does the enzyme exist in nature?
+    <span class="cn">自然界的分布</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>Real ACC deaminase is found in many bacteria (Pseudomonas, Rhizobium, Enterobacter), some fungi (Trichoderma, Penicillium, Fusarium), and one or two archaea. <strong>It is NOT reliably found in plants</strong> — what looks like plant ACCD is usually DCD (the homolog).</p>
+    <p><strong>And critically: it is probably NOT in any <em>Bacillus</em> species.</strong> Despite many papers claiming Bacillus ACCD activity, careful sequence analysis shows most of these are misidentified.</p>
+  </div>
+
+  <h3 class="sub">How to tell real ACCD from impostors<span class="cn">如何辨識真正的 ACCD</span></h3>
+  <p>If you're looking at a sequence and wondering "is this really an ACC deaminase?", check for these five residues. <strong>All five must be present</strong> at the right positions:</p>
+
+  <div class="table-wrap" style="max-width: 700px;">
+  <table>
+    <thead><tr><th>Position</th><th>True ACCD</th><th>TdcB (impostor)</th><th>DCD</th></tr></thead>
+    <tbody>
+    <tr><td>51</td><td><code>K</code> (Lys)</td><td><code>K</code></td><td><code>K</code></td></tr>
+    <tr><td>78</td><td><code>S</code> (Ser)</td><td>varies</td><td><code>S</code></td></tr>
+    <tr><td>294/295</td><td><strong><code>Y</code> (Tyr)</strong></td><td><strong>NOT Y</strong></td><td><strong>NOT Y</strong></td></tr>
+    <tr><td>295/296</td><td><strong><code>E</code> (Glu)</strong></td><td>varies</td><td><strong><code>S/T</code></strong></td></tr>
+    <tr><td>322/323</td><td><strong><code>L</code> (Leu)</strong></td><td>varies</td><td><strong><code>T</code></strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p style="font-size:0.95rem; color:var(--ink-soft); font-style:italic;">Source: Nascimento et al. 2014 and Li et al. 2015 — both worth reading in full.</p>
+</section>
+
+<!-- ====================== SECTION 7: FRONTIER ====================== -->
+<section class="chapter" id="sec7">
+  <div class="section-number">SECTION 07</div>
+  <h2 class="section-title">What is the field doing right now? (2020–2026)
+    <span class="cn">目前的研究前沿</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>Most ACCD research in the last six years has been about <strong>finding new bacteria</strong> that already produce it (isolation), or about <strong>spraying them on plants</strong> in field trials. Almost nobody is doing protein engineering on ACCD itself. Nobody is using AlphaFold or Rosetta to redesign it. Nobody has combined it with optogenetics or synthetic gene circuits.</p>
+    <p>This is enormous news for us: the entire combination — engineered + secreted + optogenetic + sensor-triggered + in <em>B. subtilis</em> + delivered through a hardware device — has never been published. We are not "us too" to any prior project. <strong>We are the first.</strong></p>
+  </div>
+
+  <p>The four open frontiers we identified, where literally no published work exists:</p>
+
+  <ul style="list-style: none; padding: 0; margin: 24px 0;">
+    <li style="padding: 14px 20px; background: var(--paper-dark); margin-bottom: 10px; border-left: 3px solid var(--moss);"><strong>1.</strong> Any directed evolution or ALE applied to ACCD</li>
+    <li style="padding: 14px 20px; background: var(--paper-dark); margin-bottom: 10px; border-left: 3px solid var(--moss);"><strong>2.</strong> Any engineered secretion of ACCD from any bacterial host</li>
+    <li style="padding: 14px 20px; background: var(--paper-dark); margin-bottom: 10px; border-left: 3px solid var(--moss);"><strong>3.</strong> Any optogenetically controlled ACCD</li>
+    <li style="padding: 14px 20px; background: var(--paper-dark); margin-bottom: 10px; border-left: 3px solid var(--moss);"><strong>4.</strong> Any AlphaFold- or Rosetta-redesigned ACCD variant</li>
+  </ul>
+
+  <p>Our project touches three of these four (#2, #3, and potentially #4). That's a strong novelty position for the Best Plant Synbio and Best New Part prize categories.</p>
+</section>
+
+<!-- ====================== SECTION 8: STRATEGY ====================== -->
+<section class="chapter" id="sec8">
+  <div class="section-number">SECTION 08</div>
+  <h2 class="section-title">Six engineering directions — which to actually pursue
+    <span class="cn">六個工程方向 — 我們選哪些？</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <div class="plain-english">
+    <span class="label-en">Plain English Summary</span>
+    <p>We evaluated six possible engineering directions for the team. Two are <strong>GO</strong>, one is <strong>CONDITIONAL</strong>, and three are <strong>NO-GO</strong> for our timeline. Below are the verdicts. The "GO" cards have green tops, "CONDITIONAL" has gold, "NO-GO" has rust. Click any card for the full reasoning.</p>
+  </div>
+
+  <div class="strategy-grid">
+
+    <div class="strategy-card go">
+      <span class="verdict">★ Go · 主力方向</span>
+      <h4>A · Signal-peptide secretion</h4>
+      <p>Fuse a B. subtilis signal peptide (TAT pathway: PhoD or YwbN) to the front of ACCD so the cell exports it. <strong>Required</strong> for our TFF delivery to work at all.</p>
+      <div class="stats">
+        <div><span>Feasibility:</span><span>HIGH</span></div>
+        <div><span>Timeline:</span><span>6–8 weeks</span></div>
+        <div><span>Novelty:</span><span>STRONG</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card go">
+      <span class="verdict">★ Go · 新穎方向</span>
+      <h4>F · Minimal DCD→ACCD synthon</h4>
+      <p>Take tomato DCD and apply two mutations to convert it to a "minimal ACCD." Creates a clean, characterized synthetic biology part — ideal for Best New Part.</p>
+      <div class="stats">
+        <div><span>Feasibility:</span><span>HIGH</span></div>
+        <div><span>Timeline:</span><span>6–8 weeks</span></div>
+        <div><span>Novelty:</span><span>VERY HIGH</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card cond">
+      <span class="verdict">◇ Conditional · 預備</span>
+      <h4>B · pH-optimum shifting</h4>
+      <p>Rationally design mutations to shift the pH optimum from 8.5 (alkaline) toward 6.5 (rhizosphere). No published precedent for fold-type II enzymes — pursue only if A and F succeed early.</p>
+      <div class="stats">
+        <div><span>Feasibility:</span><span>MEDIUM</span></div>
+        <div><span>Timeline:</span><span>8–10 weeks</span></div>
+        <div><span>Novelty:</span><span>HIGH</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card nogo">
+      <span class="verdict">✗ No-Go · 不可行</span>
+      <h4>C · K_M reduction</h4>
+      <p>Lower the K_M from mM to μM. <strong>Zero published precedent</strong>; structurally enforced by the cyclopropane-shaped pocket. Frame as an identified gap in our writeup, but don't attempt experimentally.</p>
+      <div class="stats">
+        <div><span>Feasibility:</span><span>LOW</span></div>
+        <div><span>Timeline:</span><span>12+ weeks</span></div>
+        <div><span>Novelty:</span><span>HIGH if it worked</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card nogo">
+      <span class="verdict">✗ No-Go · 不可行</span>
+      <h4>D · ALE on ACC minimal medium</h4>
+      <p>Adaptive laboratory evolution — let bacteria evolve themselves. Would need a turbidostat, sequencing pipeline, and 8–12 weeks of passaging. Mutations will probably land on the plasmid, not the enzyme. Outside our timeline.</p>
+      <div class="stats">
+        <div><span>Feasibility:</span><span>LOW</span></div>
+        <div><span>Timeline:</span><span>16+ weeks</span></div>
+        <div><span>Novelty:</span><span>MEDIUM</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card nogo">
+      <span class="verdict">✗ No-Go · 不可行</span>
+      <h4>E · Directed evolution screen</h4>
+      <p>Make a fluorescent biosensor for ACCD activity and screen libraries. <strong>No such biosensor exists.</strong> Building it from scratch would consume the entire project. Skip.</p>
+      <div class="stats">
+        <div><span>Feasibility:</span><span>LOW</span></div>
+        <div><span>Timeline:</span><span>20+ weeks</span></div>
+        <div><span>Novelty:</span><span>MEDIUM</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="sub">Our concrete plan<span class="cn">具體計畫</span></h3>
+  <p><strong>Track 1 (primary):</strong> Clone <em>P. putida</em> UW4 <em>acdS</em>. Fuse it to TAT signal peptides (PhoD, YwbN — try both). Express in protease-deficient <em>B. subtilis</em> WB800N under CcaSR optogenetic control. Verify (a) intracellular expression by Western, (b) secretion by activity assay on culture supernatant minus cell pellet, (c) trimer reassembly by native PAGE.</p>
+  <p><strong>Track 2 (parallel):</strong> Synthesize tomato DCD with the two reverse Todorovic-Glick mutations. Express in parallel. Characterize activity. Submit as a Best New Part.</p>
+  <p><strong>Stretch goal:</strong> If both tracks succeed by month 4, prototype pH-engineered variants in silico using AlphaFold electrostatics + a small set of designed mutations.</p>
+</section>
+
+<!-- ====================== MASTER MUTATION TABLE (KEEP FROM SEC 2) ====================== -->
+
+<!-- ====================== READING LIST ====================== -->
+<section class="chapter" id="reading">
+  <div class="section-number">APPENDIX</div>
+  <h2 class="section-title">If you read nothing else, read these
+    <span class="cn">必讀文獻</span>
+  </h2>
+  <div class="section-divider"></div>
+
+  <p class="intro-para">The 20 papers below cover almost everything we said above. Mix of recent (60%, 2020–2026) and foundational (40%, pre-2020). Start with the four marked <strong style="color:var(--rust);">★ ESSENTIAL</strong>.</p>
+
+  <details open>
+    <summary><strong style="color:var(--rust);">★ Essential — read these first (4 papers)</strong></summary>
+    <div class="details-body">
+      <ol style="padding-left: 24px; line-height: 2;">
+        <li><strong>Karthikeyan et al. 2004</strong>, <em>Biochemistry</em> 43:13328. The crystal-structure paper. Defines the active site. PDBs 1RQX, 1TZ2, 1TZJ, 1TZK, 1TZM.</li>
+        <li><strong>Liu et al. 2011</strong>, <em>Biochemistry</em> 50:1950. The mechanism paper. Y294F kills the enzyme; Y268F cripples it. Read after Karthikeyan.</li>
+        <li><strong>Todorovic & Glick 2008</strong>, <em>Planta</em> 229:193. The E295S/L322T two-mutation function switch. Foundational for our Option F.</li>
+        <li><strong>Castillo-Hair et al. 2019</strong>, <em>Nat. Commun.</em> 10:3099. The CcaSR v1.0 paper — our optogenetic system. <em>Note: this was characterized in E. coli, not B. subtilis. We need to verify portability.</em></li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>Foundational structural and biochemical (5 papers)</summary>
+    <div class="details-body">
+      <ol start="5" style="padding-left: 24px; line-height: 2;">
+        <li><strong>Honma & Shimomura 1978</strong>. The original ACCD discovery. K_M ≈ 1.5 mM. The DNPH assay protocol we will use.</li>
+        <li><strong>Sheehy et al. 1991</strong>. First cloning of <em>acdS</em> and heterologous expression in <em>E. coli</em>.</li>
+        <li><strong>Hontzeas et al. 2004</strong>. Definitive biochemical characterization of UW4 ACCD.</li>
+        <li><strong>Yao et al. 2000</strong>. First ACCD crystal structure (yeast, PDB 1F2D).</li>
+        <li><strong>Ose et al. 2003</strong>. K51T and Y295F intermediate structures (PDB 1J0E). Two-phenol charge relay.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>Recent reviews and frontier (6 papers, 2020–2026)</summary>
+    <div class="details-body">
+      <ol start="10" style="padding-left: 24px; line-height: 2;">
+        <li><strong>Shahid et al. 2023</strong>, <em>Front. Microbiol.</em> 14:1132770. Most thorough recent review. <em>Secondary source.</em></li>
+        <li><strong>Pramanik & Mandal 2022</strong>. First large-scale in-silico structural survey across 40 fungal ACCDs.</li>
+        <li><strong>Suarez et al. 2025</strong>, <em>Current Plant Biology</em>. <em>Hartmannibacter</em> has ACCD activity but no acdS gene — cautionary tale.</li>
+        <li><strong>Glick 2014</strong>, <em>Microbiol. Res.</em> 169:30. The canonical review and the two-peak ethylene model.</li>
+        <li><strong>Glick & Glick 2020</strong>, <em>Microorganisms</em>. Updated review. <em>Secondary source.</em></li>
+        <li><strong>Fedorova et al. 2022</strong>. AcdR-only regulation in <em>Methylobacterium</em>.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>Critical "do not" papers — read so you don't make these mistakes (5 papers)</summary>
+    <div class="details-body">
+      <ol start="16" style="padding-left: 24px; line-height: 2;">
+        <li><strong>Bharath et al. 2012</strong>. T288E destroyed PLP binding in <em>Salmonella</em> DCD. Scaffold matters.</li>
+        <li><strong>Li et al. 2015</strong>, FEMS Microbiol Ecol 91:fiv112. How to distinguish real ACCD from impostors. Read before choosing your gene template.</li>
+        <li><strong>Nascimento et al. 2014</strong>. Phylogenetic + sequence-filter analysis. Companion to #17.</li>
+        <li><strong>Riemenschneider et al. 2005</strong>. The "Arabidopsis acdS" turned out to be DCD. Annotation in databases lies.</li>
+        <li><strong>Cheng et al. 2008</strong>. The AcdR/AcdB/leucine regulatory mechanism. Understand what we're replacing.</li>
+      </ol>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="endmatter">
+  <h2>"Every sentence should contain a specific, citable claim."</h2>
+  <p>If you've made it this far, you understand more about ACC deaminase than 95% of the people who will ever read about it. Bring questions to lab meeting; we'll work through them together.</p>
+  <div class="sig">GEMS Taiwan · iGEM 2026 · Drylab Literature Review</div>
+</footer>
+
+<script>
+// ============================================================
+// Residue info data — keyed to the buttons in Section 1
+// ============================================================
+const residueData = {
+  K51: {
+    name: "Lysine 51",
+    cn: "離胺酸 51 — PLP 錨點",
+    role: "PLP anchor — forms a Schiff base with the cofactor",
+    body: `<p>Lys51 is the residue that physically holds <strong>PLP</strong> (vitamin B6 derivative) inside the enzyme via a reversible chemical bond called a Schiff base.</p>
+           <p>When ACC enters the pocket, it <em>displaces</em> Lys51 from PLP — they briefly share the cofactor (the famous "gem-diamine" intermediate, caught on camera in PDB 1TZ2). Then Lys51 acts as a base, plucking off a hydrogen later in the reaction.</p>
+           <p><span class="mutation">K51A</span> or <span class="mutation">K51T</span> → enzyme is completely inactive. The K51T mutant was actually used to <em>trap</em> the reaction intermediate for crystallography.</p>`
+  },
+  S78: {
+    name: "Serine 78",
+    cn: "絲胺酸 78 — 受質固定點",
+    role: "Substrate grip — holds ACC in position",
+    body: `<p>Ser78 makes hydrogen bonds with ACC's carboxylate group, anchoring the substrate in exactly the right orientation for Tyr294 to attack.</p>
+           <p><span class="mutation">S78A</span> → ~100× slower than wild-type. The enzyme still folds, still binds PLP, still has Tyr294 — but without Ser78's grip, the substrate isn't held tightly enough for efficient catalysis.</p>`
+  },
+  Y268: {
+    name: "Tyrosine 268",
+    cn: "酪胺酸 268 — 電荷傳遞",
+    role: "Charge relay — makes Tyr294 reactive",
+    body: `<p>Tyr268 sits right next to Tyr294 and hydrogen-bonds to it. This bond lowers Tyr294's pKa (makes its hydroxyl easier to deprotonate), which is what turns Tyr294 into a chemical nucleophile capable of attacking the cyclopropane ring.</p>
+           <p><span class="mutation">Y268F</span> → ~25× slower. Removes the hydrogen-bonding hydroxyl, so Tyr294 stays protonated and unreactive most of the time.</p>
+           <p>This is the "two-phenol charge relay" model from Ose et al. 2003 and Liu et al. 2011.</p>`
+  },
+  Y294: {
+    name: "Tyrosine 294",
+    cn: "酪胺酸 294 — 化學「剪刀」",
+    role: "The catalytic nucleophile — opens the ring",
+    body: `<p><strong>The single most important residue in the entire enzyme.</strong> Tyr294's hydroxyl group attacks one of the strained carbons of the cyclopropane ring. The ring snaps open. Without this attack, the reaction cannot happen.</p>
+           <p><span class="mutation">Y294F</span> → <strong>completely dead.</strong> No activity detectable by NMR. The mutation removes only the hydroxyl group (Y→F just deletes the OH) while keeping the aromatic ring, so we know it's specifically the hydroxyl that matters. This is the chemistry-textbook definition of a clean mechanism mutation.</p>
+           <p>Across all real ACC deaminases ever sequenced, Tyr294 is <strong>invariant</strong>. It's the diagnostic residue: if a sequence doesn't have a Y here, it's not a true ACCD.</p>`
+  },
+  E295: {
+    name: "Glutamate 295",
+    cn: "麩胺酸 295 — 電子接受器",
+    role: "Electron sink — tunes PLP's reactivity",
+    body: `<p>Glu295 hydrogen-bonds to the N1 nitrogen of PLP's pyridine ring. This makes the pyridine a stronger "electron sink" — it pulls electron density through the substrate during the reaction, lowering the activation energy.</p>
+           <p>In <strong>DCD</strong> (the cousin enzyme), this position is Ser or Thr instead of Glu. The weaker electron sink is part of why DCD can't cleave cyclopropane rings — it works on sulfur-containing substrates instead.</p>
+           <p>One half of the famous <span class="mutation">E295S + L322T</span> two-residue switch (Todorovic & Glick 2008) that converts ACCD into DCD.</p>
+           <p><strong>Caution:</strong> the reverse mutation in some scaffolds <em>destroys PLP binding entirely</em> (Bharath 2012). Position 295 is structurally delicate.</p>`
+  },
+  L322: {
+    name: "Leucine 322",
+    cn: "白胺酸 322 — 口袋底部",
+    role: "Pocket floor — hydrophobic shape",
+    body: `<p>Leu322 sits at the floor of the active-site pocket. Its hydrophobic side chain creates the right-shaped "cup" for the cyclopropane ring of ACC to fit into.</p>
+           <p>In <strong>DCD</strong>, this position is Thr (a polar residue) — which fits a thiol substrate but not a cyclopropane. The shape and chemistry of the floor selects what substrate the enzyme can accept.</p>
+           <p>The second half of the <span class="mutation">E295S + L322T</span> ACCD→DCD switch. Both residues together define substrate specificity.</p>`
+  }
+};
+
+// ============================================================
+// Wire up the residue-button interactivity
+// ============================================================
+document.querySelectorAll('.residue-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // remove .active from all buttons
+    document.querySelectorAll('.residue-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const data = residueData[btn.dataset.res];
+    const info = document.getElementById('residueInfo');
+    info.innerHTML = `
+      <h5>${data.name} <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8em; color: var(--ink-soft);">— ${data.role}</span></h5>
+      <span class="cn-name">中文：${data.cn}</span>
+      ${data.body}
+    `;
+  });
+});
+
+// ============================================================
+// Mutation table filter
+// ============================================================
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('#mutTable tbody tr').forEach(row => {
+      if (filter === 'all') {
+        row.style.display = '';
+      } else {
+        const tags = (row.dataset.tag || '').split(' ');
+        row.style.display = tags.includes(filter) ? '' : 'none';
+      }
+    });
+  });
+});
+
+// ============================================================
+// TOC sidebar toggle
+// ============================================================
+function toggleTOC() {
+  document.getElementById('toc').classList.toggle('open');
+  document.querySelector('.toc-overlay').classList.toggle('open');
+}
+
+// Close TOC on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('toc').classList.remove('open');
+    document.querySelector('.toc-overlay').classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>

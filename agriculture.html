@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agriculture · AcdS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"></header>
+
+<div class="entry-banner">
+  <div class="inner">
+    <h1>Agricultural applications</h1>
+    <span class="accession">PGPB · stress mitigation</span>
+    <div class="badges">
+      <span class="badge length">Salt · Drought · Flooding · Metals · Pathogens</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidenav">
+    <h4>On this page</h4>
+    <a href="#why">Why it matters</a>
+    <a href="#mechanism">Plant–microbe model</a>
+    <a href="#strains">PGPB strains</a>
+    <a href="#stress">Stresses &amp; cases</a>
+    <a href="#thresholds">Activity thresholds</a>
+    <a href="#regulation">acdS regulation</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="block" id="why">
+      <h2>Why ACC deaminase matters in agriculture</h2>
+      <div class="body">
+        <p>
+          When plants experience abiotic or biotic stress, they up-regulate ACC synthase and produce
+          a damaging second "stress-ethylene" peak that triggers senescence, chlorosis, leaf abscission,
+          and yield loss. Rhizospheric and endophytic bacteria carrying <em>acdS</em> intercept ACC
+          exuded from roots and convert it to α-ketobutyrate + NH₃ — depleting the substrate pool for
+          ethylene biosynthesis and rescuing the plant.
+        </p>
+        <div class="stat-grid">
+          <div class="stat"><div class="v">50–90 %</div><div class="l">stress-ethylene reduction</div></div>
+          <div class="stat"><div class="v">~40 %</div><div class="l">↑ rhizobial nodulation</div></div>
+          <div class="stat"><div class="v">800–1000 Mha</div><div class="l">salt-affected land worldwide</div></div>
+          <div class="stat"><div class="v">~20 %</div><div class="l">irrigated land salt-impacted</div></div>
+          <div class="stat"><div class="v">&gt; 20 nmol</div><div class="l">α-KB/mg/h — "effective" PGPB cut-off</div></div>
+          <div class="stat"><div class="v">≥ 100 nM</div><div class="l">ACC concentration for induction</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="mechanism">
+      <h2>The plant–microbe model</h2>
+      <div class="body">
+        <ol>
+          <li><strong>Stress signal</strong> (NaCl, drought, hypoxia, pathogen, heavy metal) → plant up-regulates <em>SAM synthase</em>.</li>
+          <li><em>SAM</em> → <strong>ACC synthase</strong> → <strong>ACC</strong> (precursor of ethylene).</li>
+          <li>ACC diffuses out of root tissue into the rhizosphere or endosphere.</li>
+          <li>PGPB take up ACC and cleave it via <strong>AcdS</strong> → α-ketobutyrate + NH₃ (used as N source).</li>
+          <li>Lowered ACC pool → suppressed second ethylene peak → plant resumes growth.</li>
+          <li><strong>IAA crosstalk:</strong> bacterial IAA stimulates plant ACC synthase, but AcdS blocks the ethylene feedback that would shut down IAA signalling — the two activities synergise.</li>
+        </ol>
+        <p style="font-size: 12.5px; color: var(--text-mute);">Ethylene is bioactive at concentrations as low as 0.05 µL/L; the typical plant response is triggered at &lt; 1.0 ppm. Fruit-ripening ethylene reaches 200 µL/L.</p>
+      </div>
+    </section>
+
+    <section class="block" id="strains">
+      <h2>PGPB strains carrying <em>acdS</em></h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead><tr><th>Genus / group</th><th>Representative strains</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><em>Pseudomonas</em></td>
+                <td><em>P. putida</em> UW4, GR12-2; <em>P. fluorescens</em> YsS6, UM270, NMpb82; <em>P. aeruginosa</em> N39; <em>P. chloroaphis</em> 6G5; <em>Pseudomonas</em> sp. ACP</td>
+                <td>Most-studied lineage; UW4 = the model strain (Glick lab).</td></tr>
+            <tr><td><em>Bacillus</em></td>
+                <td><em>B. subtilis</em> BERA-71, HYT-12/1, PR-6; <em>B. megaterium</em> NMp082; <em>B. amyloliquefaciens</em> NRRSN13; <em>B. circulans</em> DUC1, <em>B. firmus</em> DUC2, <em>B. globisporus</em> DUC3; <em>B. mojavensis</em> K78; <em>B. licheniformis</em> B2r; <em>B. cereus</em> TG1-6; <em>B. methylotrophicus</em> M4-96</td>
+                <td>Spore-forming; often field-stable.</td></tr>
+            <tr><td>Rhizobia (symbionts)</td>
+                <td><em>Mesorhizobium ciceri</em>, <em>M. loti</em>; <em>Rhizobium leguminosarum</em>; <em>Sinorhizobium meliloti</em> KYA71</td>
+                <td>ACCD activity is 2–10 % of free-living PGPB but sufficient because of intimate nodule contact.</td></tr>
+            <tr><td>Other Gram-negatives</td>
+                <td><em>Achromobacter piechaudii</em> ARV8; <em>Burkholderia phytofirmans</em>; <em>Enterobacter cloacae</em> UW4; <em>Serratia marcescens</em> BC-3; <em>Stenotrophomonas maltophilia</em>; <em>Leclercia adecarboxylata</em> MO1; <em>Kluyvera ascorbata</em> SUD165</td>
+                <td>Often desert / saline / metal-contaminated origins.</td></tr>
+            <tr><td>Actinobacteria / others</td>
+                <td><em>Arthrobacter protophormiae</em>; <em>Brevibacterium epidermidis</em> RS15; <em>Micrococcus yunnanensis</em> RS222; <em>Paenibacillus xylanexedens</em> PD-R6</td>
+                <td>Endophytic colonisation common.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="padding: 18px 18px 0;">Representative ACCD specific activities</h3>
+        <table class="data">
+          <thead><tr><th>Strain</th><th>Activity (nmol α-KB/mg/h)</th></tr></thead>
+          <tbody>
+            <tr><td><em>Sinorhizobium meliloti</em> KYA71</td><td class="mono">326,136</td></tr>
+            <tr><td><em>Serratia marcescens</em> BC-3</td><td class="mono">38,520</td></tr>
+            <tr><td><em>Pseudomonas</em> sp. R3</td><td class="mono">23,490</td></tr>
+            <tr><td><em>Bacillus</em> sp. MR4</td><td class="mono">15,920</td></tr>
+            <tr><td><em>P. putida</em> UW4</td><td class="mono">3,030</td></tr>
+            <tr><td>"Effective PGPB" threshold</td><td class="mono">&gt; 20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="stress">
+      <h2>Stresses, crops, and outcomes</h2>
+      <div class="body" style="padding: 0;">
+        <table class="data">
+          <thead>
+            <tr><th>Stress</th><th>System</th><th>Outcome (quantitative)</th><th>Reference</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Drought</strong></td>
+                <td><em>A. piechaudii</em> ARV8 + tomato (1 week unwatered, rewatered)</td>
+                <td class="mono">4× biomass; ¼ stress-ethylene</td>
+                <td>Mayak 2004</td></tr>
+            <tr><td><strong>Salt</strong> (300 mM NaCl)</td>
+                <td><em>Bacillus</em> sp. + <em>Mesembryanthemum crystallinum</em></td>
+                <td>Growth promotion under salt; halotolerance verified up to 1250 mM</td>
+                <td>Mahmoud 2019</td></tr>
+            <tr><td><strong>Salt</strong></td>
+                <td><em>B. mojavensis</em> K78 + wheat</td>
+                <td>↑ DW, ↑ chlorophyll, ↑ nutrient uptake</td>
+                <td>Pourbabaee 2016</td></tr>
+            <tr><td><strong>Salt</strong></td>
+                <td><em>L. adecarboxylata</em> MO1 + tomato</td>
+                <td>Endophytic colonisation → salt tolerance</td>
+                <td>Kang 2019</td></tr>
+            <tr><td><strong>Salt</strong></td>
+                <td><em>P. putida</em> UW4 + <em>Gigaspora rosea</em> + cucumber</td>
+                <td>Synergistic ↑ biomass, root length, leaf area</td>
+                <td>Gamalero 2008</td></tr>
+            <tr><td><strong>Salt</strong></td>
+                <td>WU-9 + pepper (<em>Capsicum</em>)</td>
+                <td>↑ proline, ↑ antioxidant enzymes</td>
+                <td>Wang 2018</td></tr>
+            <tr><td><strong>Salt + Rhizobium</strong></td>
+                <td><em>A. protophormiae</em> + pea</td>
+                <td>↑ nodulation, ↑ mycorrhizal colonisation</td>
+                <td>Barnawal 2014</td></tr>
+            <tr><td><strong>Nodulation</strong></td>
+                <td>Rhizobia w/ ACCD + legumes</td>
+                <td class="mono">up to +40 % nodulation efficiency</td>
+                <td>Glick 2014 review</td></tr>
+            <tr><td><strong>Flooding</strong></td>
+                <td>Hypoxia-induced ACC → epinasty model</td>
+                <td>ACCD PGPB intercept ACC before transport to shoot</td>
+                <td>Glick 2014</td></tr>
+            <tr><td><strong>Ni²⁺ phytoremediation</strong></td>
+                <td><em>K. ascorbata</em> SUD165 + canola</td>
+                <td>↓ Ni toxicity; field-confirmed</td>
+                <td>Burd 1998/2000</td></tr>
+            <tr><td><strong>Petroleum sludge</strong></td>
+                <td>Field site, multi-PGPB consortium</td>
+                <td>Phytoremediation success</td>
+                <td>Gurska 2009</td></tr>
+            <tr><td><strong>Flower senescence</strong></td>
+                <td>Endophytic PGPB in carnations</td>
+                <td class="mono">+5–6 d vase life</td>
+                <td>Glick 2014</td></tr>
+            <tr><td><strong>Pathogen</strong></td>
+                <td>Trans-AcdS plants vs. <em>Verticillium</em>, <em>Agrobacterium</em></td>
+                <td>Reduced symptom expression</td>
+                <td>Glick 2014</td></tr>
+            <tr><td><strong>Endophyte census</strong></td>
+                <td><em>M. truncatula</em> roots, salt-treated</td>
+                <td class="mono">~70 % OTU turnover</td>
+                <td>Yaish 2016</td></tr>
+            <tr><td><strong>Niche selection</strong></td>
+                <td>Evolution Canyon, Israel (south- vs north-facing slope)</td>
+                <td class="mono">~50 % vs ~4 % of bacteria carry <em>acdS</em></td>
+                <td>Glick 2014</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="padding: 18px 18px 0;">Crops tested</h3>
+        <div style="padding: 0 18px 18px;">
+          <p>Tomato · chickpea · French bean · canola (<em>Brassica napus</em> / <em>nigra</em>) · garlic · <em>Camelina sativa</em> · <em>Acacia gerrardii</em> · wheat · <em>Panicum maximum</em> · pea · carnation (<em>Dianthus</em>) · <em>Medicago</em> · <em>Arabidopsis</em> · maize · rice · common bean · ice-plant · potato · pepper · peanut · cucumber.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="thresholds">
+      <h2>Activity thresholds &amp; field considerations</h2>
+      <div class="body">
+        <ul>
+          <li><strong>Functional cut-off:</strong> &gt; 20 nmol α-ketobutyrate / mg protein / h is the de-facto "effective PGPB" threshold (Glick 2014; Penrose &amp; Glick assay).</li>
+          <li><strong>Induction substrate:</strong> ACC ≥ 100 nM; basal activity ≤ 5 % of induced.</li>
+          <li><strong>Optimal pH / T:</strong> 8.0–8.5 and 25–30 °C — well-matched to many soil environments.</li>
+          <li><strong>Cytoplasmic localisation:</strong> ACCD is intracellular; ACC enters via passive diffusion or a transporter.</li>
+          <li><strong>Microbial population stress effect:</strong> 10⁸–10⁹ cells / g (healthy) → 10⁴ cells / g (saline soil) — inoculation can re-establish PGPB density.</li>
+          <li><strong>Rhizobia caveat:</strong> ACCD activity in symbionts is 2–10 % of free-living PGPB but functionally sufficient because rhizobia sit inside nodules in tight contact with the host.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="regulation">
+      <h2>acdS expression in vivo</h2>
+      <div class="body">
+        <ul>
+          <li><strong>acdR:</strong> Lrp-family regulator divergently transcribed upstream of <em>acdS</em>; senses leucine (a downstream catabolite of α-KB).</li>
+          <li><strong>Promoter elements:</strong> FNR box (microaerobic activation), Lrp/AcdR site, CRP site.</li>
+          <li><strong>Inducer:</strong> ACC (≥ 100 nM); basal ≤ 5 %.</li>
+          <li><strong>Symbiotic rewiring:</strong> in <em>Mesorhizobium loti</em>, <em>acdS</em> is moved under <em>nifA</em> / σ⁵⁴ control — co-induced with nitrogen fixation.</li>
+          <li><strong>Horizontal transfer:</strong> rare; <em>acdS</em> shows mostly vertical inheritance, consistent with deep evolutionary co-option.</li>
+          <li><strong>Survey statistics:</strong> ~12 % of 233 Saskatchewan rhizobial strains are <em>acdS</em>⁺; 18/18 Portuguese chickpea <em>Mesorhizobium</em> isolates are <em>acdS</em>⁺.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">ACC Deaminase Knowledgebase · Agriculture</footer>
+<script src="js/nav.js"></script>
+</body>
+</html>
