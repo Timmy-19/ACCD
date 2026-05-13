@@ -47,6 +47,36 @@
       <div id="sequence-display" class="sequence-display"></div>
     </section>
 
+    <section class="block">
+      <h2>Multiple sequence alignment &amp; phylogeny</h2>
+      <div class="body">
+        <p>Cross-organism alignments and fungal-isoform phylogenetics anchor the UW4 residue numbering used throughout this knowledgebase.</p>
+        <div class="fig-grid cols-2">
+          <figure class="fig">
+            <img src="figures/hontzeas2004_msa.png" alt="MSA across ACCD homologues">
+            <figcaption><strong>MSA across bacterial AcdS homologues.</strong> Multiple sequence alignment including <em>P. putida</em> UW4, <em>Pseudomonas</em> sp. ACP, <em>E. coli</em> YedO, and <em>Penicillium</em> orthologue. Strict conservation of Lys51 (PLP), Ser78, Tyr268, Tyr294, Glu295 is visible as columns.<span class="src">Hontzeas 2004 · Fig 4</span></figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="figures/pramanik2022_msa.png" alt="Fungal ACCD MSA">
+            <figcaption><strong>Fungal AcdS multiple sequence alignment.</strong> Forty fungal isoforms aligned with Clustal Omega. Conserved columns flank the PALP signature — the pyridoxal-phosphate-dependent enzyme motif diagnostic of fold-type II.<span class="src">Pramanik 2022 · Fig 5</span></figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="figures/pramanik2022_phylogeny.png" alt="Phylogenetic tree of fungal ACCDs">
+            <figcaption><strong>Phylogeny of 40 fungal ACC-deaminases.</strong> Circular tree spanning 19 genera; Ascomycota (74 %) dominate, with <em>Colletotrichum</em>, <em>Fusarium</em>, <em>Trichoderma</em>, and <em>Metarhizium</em> the most-represented clades.<span class="src">Pramanik 2022 · Fig 1</span></figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="figures/pramanik2022_heatmap.png" alt="Amino-acid composition heatmap">
+            <figcaption><strong>Amino-acid composition heatmap.</strong> Per-residue frequencies across the 40 fungal isoforms; reveals biases (e.g. high Gly/Ala in thermostable variants — aliphatic index 81–100).<span class="src">Pramanik 2022 · Fig 2</span></figcaption>
+          </figure>
+        </div>
+
+        <figure class="fig">
+          <img src="figures/sheehy1991_gene_map_sequence.png" alt="acdS gene map and nucleotide sequence">
+          <figcaption><strong>The original <em>acdS</em> gene (Sheehy 1991).</strong> Restriction map and 2.2-kb <em>EcoRI–PstI</em> nucleotide sequence of the <em>Pseudomonas</em> sp. ACP ACC-deaminase gene. Edman degradation of the purified protein localised the PLP attachment to Lys51 — the first identification of the catalytic Schiff-base lysine.<span class="src">Sheehy 1991 · Fig 3</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="block" id="features">
       <h2>Feature table</h2>
       <div class="body" style="padding: 0;">
@@ -169,5 +199,6 @@ GMIEMVRRGEFPDGSKVLYAHLGGAPALNAYSFLFRNG</pre>
 
 <script src="js/nav.js"></script>
 <script src="js/sequence.js"></script>
+<script src="js/lightbox.js"></script>
 </body>
 </html>
